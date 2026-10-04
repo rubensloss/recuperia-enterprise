@@ -63,10 +63,8 @@
   </script>
 
   <style>
-    /* Prevenção de quebra de layout mobile e preservação de position: sticky no desktop (Padrão Vivant) */
+    /* Padrão Vivant IA: Prevenção de quebra sem quebrar position: sticky */
     html, body {
-      overflow-x: clip;
-      max-width: 100vw;
       width: 100%;
       -webkit-text-size-adjust: 100%;
       touch-action: manipulation;
@@ -75,23 +73,24 @@
       box-sizing: border-box;
     }
 
-    /* Fixação Inteligente do Card Comercial no Desktop (Sticky Permanente ao Rolar) */
+    /* Fixação Perfeita do Card no Desktop (Exatamente como Vivant IA) */
     @media (min-width: 1024px) {
       .desktop-sticky-card {
         position: -webkit-sticky !important;
         position: sticky !important;
-        top: 6.5rem !important;
+        top: 7rem !important; /* 112px */
         z-index: 30 !important;
       }
     }
 
-    /* Transições e Efeitos de Movimento Modernos */
+    /* Navbar Glass Corporativa */
     .glass-header {
       background: rgba(15, 23, 42, 0.94);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
+
     .custom-scrollbar::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -103,6 +102,7 @@
       background: #d97706;
       border-radius: 999px;
     }
+
     .pulse-badge {
       animation: subtlePulse 2s infinite ease-in-out;
     }
@@ -110,12 +110,21 @@
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.88; transform: scale(1.03); }
     }
+
     .hover-lift {
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .hover-lift:hover {
       transform: translateY(-4px);
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   </style>
 </head>
@@ -124,38 +133,38 @@
   <!-- ========================================================================= -->
   <!-- TOP GLOBAL SWITCHER: VISÃO DO DOSSIÊ (CLIENTE) vs. COCKPIT DO ESCRITÓRIO -->
   <!-- ========================================================================= -->
+  <!-- ========================================================================= -->
+  <!-- TOP GLOBAL SWITCHER: VISÃO DO DOSSIÊ (CLIENTE) vs. COCKPIT DO ESCRITÓRIO -->
+  <!-- ========================================================================= -->
   <header class="sticky top-0 z-50 glass-header text-white">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between flex-nowrap whitespace-nowrap">
       
       <!-- Marca da Plataforma (RECUPERIA ENTERPRISE) -->
-      <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group cursor-pointer shrink-0">
-        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-amber-400 to-yellow-200 flex items-center justify-center text-brand-950 font-extrabold font-display text-base sm:text-xl shadow-md group-hover:scale-105 transition-transform duration-300">
+      <a href="index.html" class="flex items-center space-x-2 sm:space-x-2.5 group cursor-pointer shrink-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-amber-400 to-yellow-200 flex items-center justify-center text-brand-950 font-extrabold font-display text-base sm:text-xl shadow-md group-hover:scale-105 transition-transform duration-300">
           R
         </div>
-        <div>
-          <div class="flex items-center space-x-1.5">
-            <span class="font-display tracking-wider text-xs sm:text-sm font-extrabold uppercase block group-hover:text-brand-300 transition-colors">RECUPER<span class="text-brand-400">IA</span></span>
-            <span class="px-1.5 py-0.5 rounded-md bg-gradient-to-r from-amber-600 to-amber-500 text-black font-extrabold text-[9px] tracking-widest shadow-sm">SAAS</span>
-          </div>
-          <span class="text-[9px] text-zinc-400 tracking-wider uppercase hidden sm:block">Inteligência de Ativos & Desblindagem</span>
+        <div class="flex items-center space-x-2">
+          <span class="font-display tracking-wider text-xs sm:text-sm font-extrabold uppercase block group-hover:text-brand-300 transition-colors">RECUPER<span class="text-brand-400">IA</span></span>
+          <span class="px-1.5 py-0.5 rounded-md bg-gradient-to-r from-amber-600 to-amber-500 text-black font-extrabold text-[9px] tracking-widest shadow-sm">ENTERPRISE</span>
         </div>
       </a>
 
       <!-- Seletor de Modo Desktop (Padrão Vivant IA) -->
-      <div class="hidden md:flex items-center bg-surface-900/90 p-1 rounded-full border border-white/10 shadow-inner">
-        <button id="btn-mode-dossier" onclick="switchMode('dossier')" class="px-4 py-1.5 rounded-full text-xs font-bold flex items-center space-x-2 transition-all duration-300 bg-brand-600 text-white shadow-sm hover:scale-[1.02] active:scale-[0.98]">
+      <div class="hidden lg:flex items-center bg-surface-900/90 p-1 rounded-full border border-white/10 shadow-inner shrink-0">
+        <button id="btn-mode-dossier" onclick="switchMode('dossier')" class="px-4 py-1.5 rounded-full text-xs font-bold flex items-center space-x-1.5 transition-all duration-300 bg-brand-600 text-white shadow-sm hover:scale-[1.02] active:scale-[0.98]">
           <i class="ph-bold ph-file-text"></i>
-          <span>Visão do Dossiê Executivo (Apresentação ao Cliente)</span>
+          <span>Dossiê Executivo (Cliente)</span>
         </button>
-        <button id="btn-mode-cockpit" onclick="switchMode('cockpit')" class="px-4 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-2 transition-all duration-300 text-zinc-300 hover:text-white hover:scale-[1.02] active:scale-[0.98]">
+        <button id="btn-mode-cockpit" onclick="switchMode('cockpit')" class="px-4 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-1.5 transition-all duration-300 text-zinc-300 hover:text-white hover:scale-[1.02] active:scale-[0.98]">
           <i class="ph-bold ph-chart-pie-slice"></i>
-          <span>Cockpit do Escritório (Gestão & Carteira)</span>
-          <span class="ml-1 px-2 py-0.5 text-[9px] font-bold bg-brand-600 text-white rounded-full">PRO</span>
+          <span>Cockpit do Escritório</span>
+          <span class="ml-1 px-1.5 py-0.2 text-[9px] font-bold bg-brand-600 text-white rounded-full">PRO</span>
         </button>
       </div>
 
       <!-- Ações Rápidas de Cabeçalho (Responsivo) -->
-      <div class="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+      <div class="flex items-center space-x-1.5 sm:space-x-2.5 shrink-0">
         <!-- Link para o Hub Geral -->
         <a href="https://rubensloss.github.io/creative-web/" target="_blank" class="flex items-center space-x-1 px-2.5 py-1.5 text-[11px] sm:text-xs font-bold rounded-lg bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/40 transition-all hover:scale-105" title="Conhecer todas as soluções do ecossistema">
           <i class="ph-bold ph-sparkle text-sky-400"></i>
@@ -163,11 +172,11 @@
           <span class="sm:hidden">Hub</span>
         </a>
 
-        <!-- Botão Ver Laudo Demonstrativo -->
-        <button onclick="openDossierModal()" class="flex items-center space-x-1 px-2.5 py-1.5 text-[11px] sm:text-xs font-bold rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition-all hover:scale-105">
-          <i class="ph-fill ph-file-pdf text-amber-400 text-xs sm:text-sm"></i>
-          <span class="hidden sm:inline">Ver Dossiê A4</span>
-          <span class="sm:hidden">Dossiê</span>
+        <!-- Botão Vídeo Pitch de Apresentação -->
+        <button onclick="openVideoModal()" class="flex items-center space-x-1 px-2.5 py-1.5 text-[11px] sm:text-xs font-bold rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition-all hover:scale-105">
+          <i class="ph-fill ph-play-circle text-amber-400 text-sm"></i>
+          <span class="hidden sm:inline">Vídeo Oficial</span>
+          <span class="sm:hidden">Vídeo</span>
         </button>
 
         <!-- CTA Principal WhatsApp Rubens Loss -->
@@ -180,7 +189,7 @@
     </div>
 
     <!-- SELETOR DE MODO MOBILE (Segmented Control 100% nativo para smartphones) -->
-    <div class="md:hidden px-3 pb-2.5 pt-1 bg-surface-900 border-t border-white/10">
+    <div class="lg:hidden px-3 pb-2.5 pt-1 bg-surface-900 border-t border-white/10">
       <div class="grid grid-cols-2 p-1 bg-black/50 rounded-xl border border-white/10 text-xs">
         <button id="btn-mode-dossier-mob" onclick="switchMode('dossier')" class="py-2 px-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition-all bg-brand-600 text-white shadow-sm">
           <i class="ph-bold ph-file-text text-sm"></i>
@@ -200,75 +209,117 @@
   <!-- ========================================================================= -->
   <main id="view-dossier" class="transition-opacity duration-300">
     
-    <!-- Hero Comercial Elegante & Executivo -->
-    <section class="relative bg-surface-900 text-white overflow-hidden py-12 sm:py-20 border-b border-surface-800">
+    <!-- Hero Cinematográfico com VÍDEO HORIZONTAL & FILTRO TRANSLÚCIDO (Centralizado e Impactante) -->
+    <section class="relative bg-surface-900 text-white overflow-hidden min-h-[560px] sm:min-h-[620px] flex items-center justify-center py-12 sm:py-20">
       
-      <!-- Fundo Tecnológico Sutil com Gradiente Escuro -->
-      <div class="absolute inset-0 z-0 bg-gradient-to-r from-surface-950 via-surface-900 to-amber-950/40"></div>
-      <div class="absolute -top-32 right-10 w-96 h-96 bg-brand-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <!-- Vídeo de Fundo com Fallback de Imagem (Voo sobre Distrito Financeiro) -->
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <video id="hero-video" autoplay loop muted playsinline webkit-playsinline poster="assets/bg_skyline.jpg" class="w-full h-full object-cover scale-105 transform transition-transform duration-1000">
+          <source src="assets/hero_drone.mp4" type="video/mp4">
+        </video>
         
-        <!-- Badges Comerciais -->
-        <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-          <span class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-white/10 text-white border border-white/20 backdrop-blur-md">
-            <i class="ph-fill ph-shield-check text-brand-400"></i>
-            <span>Laudo Homologado nos Tribunais (TJSP, TJRJ, TRF)</span>
+        <!-- Filtro Translúcido Harmonioso Centrado -->
+        <div class="absolute inset-0 bg-gradient-to-b from-surface-950/90 via-surface-950/75 to-surface-950/95"></div>
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+        
+        <!-- Badges Flutuantes Centradas -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-5 sm:mb-6">
+          <span class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-white/15 text-white border border-white/25 backdrop-blur-md shadow-sm">
+            <i class="ph-fill ph-certificate text-brand-300"></i>
+            <span>Laudo Homologado nos Tribunais · TJSP, TJRJ, TRF</span>
           </span>
           <span class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-brand-600 text-white shadow-lg pulse-badge">
             <i class="ph-bold ph-lightning"></i>
             <span>Resultado em 2 Segundos</span>
           </span>
-          <button onclick="openDossierModal()" class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-md transition-all active:scale-95 cursor-pointer">
-            <i class="ph-fill ph-file-pdf text-amber-300 text-sm"></i>
-            <span>Ver Exemplo do Dossiê A4 Timbrado</span>
+          <button onclick="openVideoModal()" class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-md transition-all active:scale-95 cursor-pointer shadow-md">
+            <i class="ph-fill ph-play-circle text-amber-300 text-sm"></i>
+            <span>Assistir Apresentação em Vídeo</span>
           </button>
         </div>
 
-        <!-- Título Comercial de Alto Ticket -->
-        <div class="max-w-4xl mb-6">
-          <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-4">
-            Apresente Dossiês Patrimoniais Que <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-200">Impressionam Clientes</span> e Destravam Honorários
-          </h1>
-          <p class="font-display text-base sm:text-xl text-zinc-300 leading-relaxed font-light max-w-3xl">
-            A ferramenta comercial definitiva para bancas de advocacia e mesas de crédito. Venda laudos periciais de <strong class="text-white font-semibold">R$ 2.500 a R$ 5.000</strong> e comprove a ocultação de bens para garantir penhoras imediatas de dívidas dadas como perdidas.
-          </p>
-        </div>
+        <!-- Título Comercial Impactante Centrado -->
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-4 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] max-w-4xl mx-auto">
+          Apresente Dossiês Patrimoniais Que <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-200 underline decoration-amber-500/60 underline-offset-8">Impressionam Clientes</span> e Destravam Honorários
+        </h1>
 
-        <!-- Seletor de Casos Reais para Demonstração Comercial -->
-        <div class="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md max-w-3xl">
-          <span class="text-[11px] font-mono uppercase text-brand-300 font-bold block mb-2">
-            Selecione uma Demonstração Comercial para Visualizar:
-          </span>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-            <button onclick="setCommercialCase(1)" id="case-btn-1" class="p-3 rounded-xl bg-brand-600 text-white text-left text-xs font-bold transition flex flex-col justify-between shadow-sm">
-              <span>Caso 1: Execução Cível</span>
-              <span class="text-[10px] text-amber-200 font-normal">Dívida R$ 480k · Bens R$ 2.45M</span>
-            </button>
-            <button onclick="setCommercialCase(2)" id="case-btn-2" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 text-left text-xs font-bold transition flex flex-col justify-between border border-white/10">
-              <span>Caso 2: AgroLogística Ltda</span>
-              <span class="text-[10px] text-zinc-400 font-normal">Dívida R$ 1.2M · 14 Carretas</span>
-            </button>
-            <button onclick="setCommercialCase(3)" id="case-btn-3" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 text-left text-xs font-bold transition flex flex-col justify-between border border-white/10">
-              <span>Caso 3: Due Diligence Pré-Crédito</span>
-              <span class="text-[10px] text-zinc-400 font-normal">Blindagem em Cônjuge</span>
-            </button>
-          </div>
+        <!-- Subtítulo Comercial Centrado -->
+        <p class="font-display font-medium text-base sm:text-xl lg:text-2xl text-zinc-200 leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] tracking-wide max-w-3xl mx-auto mb-8">
+          A máquina comercial para bancas de advocacia e mesas de crédito. Venda laudos periciais de 
+          <span class="text-amber-400 font-extrabold underline decoration-amber-400/50 underline-offset-4">R$ 2.500 a R$ 5.000</span> 
+          e comprove a ocultação de bens para garantir penhoras imediatas de dívidas dadas como perdidas.
+        </p>
+
+        <!-- Controles Interativos Rápidos Centrados -->
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-3.5 max-w-2xl mx-auto">
+          <!-- Botão Ver Vídeo -->
+          <button onclick="openVideoModal()" class="px-5 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 text-black font-extrabold text-xs transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-1.5 hover:scale-105">
+            <i class="ph-fill ph-play text-base"></i>
+            <span>Ver Vídeo Oficial</span>
+          </button>
+
+          <!-- Botão Ver Dossiê A4 -->
+          <button onclick="openDossierModal()" class="px-5 py-3 rounded-xl bg-black/40 hover:bg-black/60 text-white font-semibold text-xs transition-all backdrop-blur-md border border-white/20 active:scale-95 flex items-center justify-center space-x-1.5 hover:scale-105">
+            <i class="ph-fill ph-file-pdf text-amber-300 text-base"></i>
+            <span>Dossiê A4 Timbrado</span>
+          </button>
+
+          <!-- Controle do Vídeo de Fundo -->
+          <button id="btn-toggle-video" onclick="toggleHeroVideo()" class="px-4 py-3 rounded-xl bg-black/40 hover:bg-black/60 text-zinc-200 font-semibold text-xs transition-all backdrop-blur-md border border-white/15 active:scale-95 flex items-center justify-center space-x-1.5 hover:scale-105">
+            <i id="icon-toggle-video" class="ph-fill ph-pause-circle text-brand-300 text-base"></i>
+            <span id="text-toggle-video">Pausar Fundo</span>
+          </button>
+
+          <!-- Contratar no WhatsApp -->
+          <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20conversar%20sobre%20a%20implanta%C3%A7%C3%A3o%20do%20RecuperIA%20Enterprise." target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-all shadow-lg active:scale-95 flex items-center justify-center space-x-1.5 hover:scale-105">
+            <i class="ph-bold ph-whatsapp-logo text-base"></i>
+            <span>Falar no WhatsApp</span>
+          </a>
         </div>
 
       </div>
     </section>
 
+    <!-- Sub-Navegação Fixa com Rolagem Suave (Exatamente como Vivant IA) -->
+    <div class="bg-white border-b border-surface-200 sticky top-16 z-40 shadow-sm overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex lg:justify-center space-x-4 sm:space-x-8 overflow-x-auto py-2.5 sm:py-3 text-xs font-bold no-scrollbar scroll-smooth">
+          <button onclick="scrollToSection('apresentacao-laudo')" class="text-brand-800 border-b-2 border-brand-600 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 hover:text-brand-900 transition-colors">
+            <i class="ph-bold ph-file-text text-brand-600 text-sm"></i>
+            <span>1. Dossiê Pericial Timbrado A4</span>
+          </button>
+          <button onclick="scrollToSection('cenas-operacao')" class="text-surface-800 hover:text-brand-700 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 transition-colors">
+            <i class="ph-bold ph-video-camera text-sm"></i>
+            <span>2. Cenas em Vídeo da Operação</span>
+          </button>
+          <button onclick="scrollToSection('carrossel-casos')" class="text-surface-800 hover:text-brand-700 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 transition-colors">
+            <i class="ph-bold ph-images text-sm"></i>
+            <span>3. Casos Reais & Imagens do Projeto</span>
+          </button>
+          <button onclick="scrollToSection('monetizacao-banca')" class="text-surface-800 hover:text-brand-700 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 transition-colors">
+            <i class="ph-bold ph-currency-dollar text-sm"></i>
+            <span>4. Como o Escritório Fatura</span>
+          </button>
+          <button onclick="scrollToSection('calculadora-roi')" class="text-surface-800 hover:text-brand-700 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 transition-colors">
+            <i class="ph-bold ph-calculator text-sm"></i>
+            <span>5. Calculadora de Honorários</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+
     <!-- ======================================================================= -->
-    <!-- CORPO PRINCIPAL COMERCIAL: 2 COLUNAS (8 COLUNAS CONTEÚDO + 4 STICKY CARD) -->
+    <!-- CONTEÚDO PRINCIPAL: 2 COLUNAS (8 COLUNAS CONTEÚDO + 4 STICKY CARD FIXO) -->
     <!-- ======================================================================= -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
         
         <!-- ===================================================================== -->
-        <!-- COLUNA ESQUERDA: APRESENTAÇÃO COMERCIAL DETALHADA (8 COLUNAS) -->
+        <!-- COLUNA ESQUERDA: CONTEÚDO RICO (8 COLUNAS) -->
         <!-- ===================================================================== -->
-        <div class="lg:col-span-8 space-y-12">
+        <div class="lg:col-span-8 space-y-16">
           
           <!-- SEÇÃO 1: O LAUDO PERICIAL TIMBRADO (A APRESENTAÇÃO QUE O CLIENTE RECEBE) -->
           <section id="apresentacao-laudo" class="space-y-6">
@@ -280,6 +331,22 @@
               <p class="text-xs sm:text-sm text-surface-800 mt-1">
                 Um documento em alta definição com a logomarca da sua banca que você entrega para o cliente em reuniões decisivas ou protocola diretamente na petição judicial.
               </p>
+            </div>
+
+            <!-- Seletor de Casos Reais para Visualização -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button onclick="setCommercialCase(1)" id="case-btn-1" class="p-3.5 rounded-2xl bg-brand-600 text-white text-left text-xs font-bold transition flex flex-col justify-between shadow-sm">
+                <span>Caso 1: Execução Cível</span>
+                <span class="text-[10px] text-amber-200 font-normal">Dívida R$ 480k · Bens R$ 2.45M</span>
+              </button>
+              <button onclick="setCommercialCase(2)" id="case-btn-2" class="p-3.5 rounded-2xl bg-white border border-surface-200 hover:border-brand-400 text-surface-800 text-left text-xs font-bold transition flex flex-col justify-between shadow-xs">
+                <span>Caso 2: AgroLogística Ltda</span>
+                <span class="text-[10px] text-surface-500 font-normal">Dívida R$ 1.2M · 14 Carretas</span>
+              </button>
+              <button onclick="setCommercialCase(3)" id="case-btn-3" class="p-3.5 rounded-2xl bg-white border border-surface-200 hover:border-brand-400 text-surface-800 text-left text-xs font-bold transition flex flex-col justify-between shadow-xs">
+                <span>Caso 3: Due Diligence Pré-Crédito</span>
+                <span class="text-[10px] text-surface-500 font-normal">Blindagem em Cônjuge</span>
+              </button>
             </div>
 
             <!-- Card de Destaque do Dossiê -->
@@ -366,8 +433,161 @@
             </div>
           </section>
 
-          <!-- SEÇÃO 2: COMO A SUA BANCA MONETIZA E COBRA PELO SERVIÇO -->
-          <section class="space-y-6">
+          <!-- SEÇÃO 2: CENAS EM VÍDEO DA OPERAÇÃO FORENSE (VÍDEOS REAIS DE CENAS) -->
+          <section id="cenas-operacao" class="space-y-6">
+            <div class="border-b border-surface-200 pb-4 flex items-end justify-between">
+              <div>
+                <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Cenas Reais de Produção</span>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-surface-900 mt-1">
+                  A Jornada da Investigação em Cenas de Alta Resolução
+                </h2>
+              </div>
+              <span class="text-xs text-brand-800 bg-brand-50 border border-brand-200 px-3 py-1 rounded-full font-bold hidden sm:inline-flex items-center space-x-1">
+                <i class="ph-bold ph-video-camera"></i>
+                <span>4 Cenas Produzidas</span>
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              <!-- Cena 1: O Problema da Execução Frustrada -->
+              <div class="bg-white rounded-3xl border border-surface-200 overflow-hidden shadow-sm hover-lift">
+                <div class="relative aspect-video bg-black overflow-hidden">
+                  <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                    <source src="assets/lawyer_frustrated.mp4" type="video/mp4">
+                  </video>
+                  <div class="absolute top-2 left-2 bg-red-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded">
+                    Cena 01 · A Dor do Advogado
+                  </div>
+                </div>
+                <div class="p-5">
+                  <h4 class="font-display font-bold text-base text-surface-900">O Cemitério de Execuções Frustradas</h4>
+                  <p class="text-xs text-surface-700 mt-1 leading-relaxed">
+                    Advogados exaustos com certidões negativas de Sisbajud e devedores que ostentam patrimônio em nome de terceiros.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Cena 2: A Varredura Forense Instantânea -->
+              <div class="bg-white rounded-3xl border border-surface-200 overflow-hidden shadow-sm hover-lift">
+                <div class="relative aspect-video bg-black overflow-hidden">
+                  <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                    <source src="assets/typing_investigation.mp4" type="video/mp4">
+                  </video>
+                  <div class="absolute top-2 left-2 bg-brand-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded">
+                    Cena 02 · A Investigação
+                  </div>
+                </div>
+                <div class="p-5">
+                  <h4 class="font-display font-bold text-base text-surface-900">Varredura nos 55 Milhões de CNPJs</h4>
+                  <p class="text-xs text-surface-700 mt-1 leading-relaxed">
+                    Em 2 segundos, o motor cruza quadros societários, juntas comerciais e cartórios de imóveis encontrando bens ocultos.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Cena 3: O Contrato & Penhora Assinados -->
+              <div class="bg-white rounded-3xl border border-surface-200 overflow-hidden shadow-sm hover-lift">
+                <div class="relative aspect-video bg-black overflow-hidden">
+                  <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                    <source src="assets/contract_signed.mp4" type="video/mp4">
+                  </video>
+                  <div class="absolute top-2 left-2 bg-emerald-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded">
+                    Cena 03 · O Fechamento
+                  </div>
+                </div>
+                <div class="p-5">
+                  <h4 class="font-display font-bold text-base text-surface-900">Minuta Aprovada & Decisão Judicial</h4>
+                  <p class="text-xs text-surface-700 mt-1 leading-relaxed">
+                    O juiz defere a penhora de cotas e desconsideração da personalidade jurídica baseado na prova temporal irrefutável.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Cena 4: Parceria e Honorários Recebidos -->
+              <div class="bg-white rounded-3xl border border-surface-200 overflow-hidden shadow-sm hover-lift">
+                <div class="relative aspect-video bg-black overflow-hidden">
+                  <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                    <source src="assets/lawyer_success.mp4" type="video/mp4">
+                  </video>
+                  <div class="absolute top-2 left-2 bg-sky-600/90 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded">
+                    Cena 04 · Sucesso do Cliente
+                  </div>
+                </div>
+                <div class="p-5">
+                  <h4 class="font-display font-bold text-base text-surface-900">Honorários na Conta & Cliente Satisfeito</h4>
+                  <p class="text-xs text-surface-700 mt-1 leading-relaxed">
+                    O cliente celebra a recuperação da dívida e o escritório embolsa honorários de êxito de 10% a 30% da execução.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SEÇÃO 3: CARROSSEL OFICIAL DE CASOS REAIS & IMAGENS DO PROJETO -->
+          <section id="carrossel-casos" class="space-y-6">
+            <div class="border-b border-surface-200 pb-4 flex items-end justify-between">
+              <div>
+                <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Material Gráfico Oficial</span>
+                <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-surface-900 mt-1">
+                  Apresentação Comercial em Carrossel
+                </h2>
+              </div>
+              <span class="text-xs text-brand-800 bg-brand-50 border border-brand-200 px-3 py-1 rounded-full font-bold">
+                5 Slides Estratégicos
+              </span>
+            </div>
+
+            <!-- Slideshow do Carrossel do RecuperIA -->
+            <div class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
+              
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-brand-800 uppercase tracking-wider flex items-center space-x-1.5">
+                  <i class="ph-bold ph-slideshow text-brand-600 text-base"></i>
+                  <span>Slide <span id="carousel-current-index">1</span> de 5</span>
+                </span>
+                
+                <!-- Botões de Navegação -->
+                <div class="flex items-center space-x-2">
+                  <button onclick="prevCarouselSlide()" class="w-8 h-8 rounded-lg bg-surface-100 hover:bg-brand-600 hover:text-white text-surface-800 flex items-center justify-center transition-colors">
+                    <i class="ph-bold ph-caret-left"></i>
+                  </button>
+                  <button onclick="nextCarouselSlide()" class="w-8 h-8 rounded-lg bg-surface-100 hover:bg-brand-600 hover:text-white text-surface-800 flex items-center justify-center transition-colors">
+                    <i class="ph-bold ph-caret-right"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Imagem Principal do Slide -->
+              <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden border border-surface-200 bg-surface-900">
+                <img id="carousel-main-img" src="assets/01.png" alt="Slide Carrossel RecuperIA" class="w-full h-full object-contain transition-all duration-500">
+              </div>
+
+              <!-- Miniaturas Clicáveis -->
+              <div class="grid grid-cols-5 gap-2">
+                <button onclick="setCarouselSlide(1)" id="thumb-c-1" class="h-16 rounded-xl overflow-hidden border-2 border-brand-600 focus:outline-none hover:scale-105 transition-all">
+                  <img src="assets/01.png" class="w-full h-full object-cover">
+                </button>
+                <button onclick="setCarouselSlide(2)" id="thumb-c-2" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
+                  <img src="assets/02.png" class="w-full h-full object-cover">
+                </button>
+                <button onclick="setCarouselSlide(3)" id="thumb-c-3" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
+                  <img src="assets/03.png" class="w-full h-full object-cover">
+                </button>
+                <button onclick="setCarouselSlide(4)" id="thumb-c-4" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
+                  <img src="assets/04.png" class="w-full h-full object-cover">
+                </button>
+                <button onclick="setCarouselSlide(5)" id="thumb-c-5" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
+                  <img src="assets/05.png" class="w-full h-full object-cover">
+                </button>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SEÇÃO 4: COMO A SUA BANCA MONETIZA E COBRA PELO SERVIÇO -->
+          <section id="monetizacao-banca" class="space-y-6">
             <div class="border-b border-surface-200 pb-4">
               <span class="text-xs font-bold tracking-widest text-emerald-700 uppercase">Modelo de Negócio para o Escritório</span>
               <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-surface-900 mt-1">
@@ -417,50 +637,49 @@
             </div>
           </section>
 
-          <!-- SEÇÃO 3: PERSONALIZAÇÃO INSTITUCIONAL COM A SUA MARCA -->
-          <section class="bg-surface-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 border border-surface-800">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-surface-800 pb-4 gap-3">
-              <div>
-                <span class="text-xs font-bold tracking-widest text-brand-300 uppercase">White-Label & Identidade da Sua Banca</span>
-                <h3 class="font-display text-2xl font-bold mt-1">O Seu Logotipo e Timbre em Todas as Peças</h3>
-              </div>
-              <div class="w-10 h-10 rounded-full bg-brand-600 text-brand-100 flex items-center justify-center text-xl">
-                <i class="ph-fill ph-seal-check"></i>
-              </div>
+          <!-- SEÇÃO 5: CALCULADORA INTERATIVA DE HONORÁRIOS & ROI -->
+          <section id="calculadora-roi" class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="border-b border-surface-200 pb-4">
+              <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Simulador de Retorno do Investimento</span>
+              <h2 class="font-display text-2xl font-bold text-surface-900 mt-1">Calcule o Potencial da Sua Carteira</h2>
+              <p class="text-xs text-surface-700 mt-1">Mova os controles para ver o valor de honorários travados que o RecuperIA destrava:</p>
             </div>
 
-            <p class="text-xs text-zinc-300 leading-relaxed">
-              O cliente final e o juiz da causa não veem a marca do software. Todo o laudo é emitido com o cabeçalho oficial, OAB dos advogados e identidade visual da sua banca:
-            </p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
-              <div class="bg-surface-800/80 border border-surface-700 rounded-xl p-4 space-y-2 hover-lift">
-                <div class="text-brand-300 font-bold flex items-center space-x-1.5">
-                  <i class="ph-bold ph-image"></i>
-                  <span>Timbre & Logo da Banca</span>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-2">
+                  <span>Execuções Travadas no Escritório:</span>
+                  <span id="slider-label-casos" class="text-brand-700 font-mono text-sm">30 processos</span>
                 </div>
-                <p class="text-zinc-400 text-[11px]">Personalização automática na primeira folha e rodapés timbrados com OAB e endereço.</p>
+                <input type="range" id="slider-casos" min="5" max="150" value="30" step="5" class="w-full accent-amber-600 cursor-pointer">
               </div>
 
-              <div class="bg-surface-800/80 border border-surface-700 rounded-xl p-4 space-y-2 hover-lift">
-                <div class="text-brand-300 font-bold flex items-center space-x-1.5">
-                  <i class="ph-bold ph-file-doc"></i>
-                  <span>Minuta em Word Editável</span>
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-2">
+                  <span>Ticket Médio por Execução:</span>
+                  <span id="slider-label-ticket" class="text-brand-700 font-mono text-sm">R$ 150.000</span>
                 </div>
-                <p class="text-zinc-400 text-[11px]">Exportação direta em arquivo .docx formatado segundo os padrões do CPC para revisão do advogado.</p>
+                <input type="range" id="slider-ticket" min="30000" max="800000" value="150000" step="10000" class="w-full accent-amber-600 cursor-pointer">
               </div>
 
-              <div class="bg-surface-800/80 border border-surface-700 rounded-xl p-4 space-y-2 hover-lift">
-                <div class="text-brand-300 font-bold flex items-center space-x-1.5">
-                  <i class="ph-bold ph-shield-check"></i>
-                  <span>Assinatura Digital ICP</span>
+              <div class="p-5 bg-gradient-to-br from-brand-50 to-surface-50 rounded-2xl border border-brand-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center font-mono">
+                <div>
+                  <span class="text-[10px] text-surface-500 uppercase block">Patrimônio Localizado</span>
+                  <strong class="text-lg text-surface-900" id="calc-patrimonio">R$ 1.575.000</strong>
                 </div>
-                <p class="text-zinc-400 text-[11px]">Compatível com assinadores padrão OAB e certificados A1/A3 para juntada imediata aos autos.</p>
+                <div>
+                  <span class="text-[10px] text-surface-500 uppercase block">Honorários de Êxito (20%)</span>
+                  <strong class="text-xl text-emerald-600 font-extrabold" id="calc-honorarios">R$ 315.000</strong>
+                </div>
+                <div>
+                  <span class="text-[10px] text-surface-500 uppercase block">ROI sobre o Plano Pro</span>
+                  <strong class="text-lg text-brand-700" id="calc-roi">> 50x</strong>
+                </div>
               </div>
             </div>
           </section>
 
-          <!-- SEÇÃO 4: DEPOIMENTOS E AVALIAÇÕES DE SÓCIOS E GESTORES -->
+          <!-- SEÇÃO 6: DEPOIMENTOS E AVALIAÇÕES DE SÓCIOS E GESTORES -->
           <section class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-surface-200 pb-4 gap-4">
               <div>
@@ -502,38 +721,50 @@
         </div>
 
         <!-- ===================================================================== -->
-        <!-- COLUNA DIREITA: BOX DE CONVERSÃO FIXA (STICKY CARD 4 COLUNAS) -->
+        <!-- COLUNA DIREITA: STICKY CARD PERMANENTE FIXO (4 COLUNAS) -->
         <!-- ===================================================================== -->
         <div class="lg:col-span-4 relative">
           
-          <div id="desktop-pricing-card" class="bg-white rounded-3xl border border-brand-300 p-5 sm:p-7 shadow-xl static lg:sticky lg:top-24 space-y-6 desktop-sticky-card max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scrollbar">
+          <div id="desktop-pricing-card" class="bg-white rounded-3xl border-2 border-brand-500/40 p-5 sm:p-7 shadow-2xl static lg:sticky lg:top-28 space-y-6 desktop-sticky-card max-h-[calc(100vh-8.5rem)] overflow-y-auto custom-scrollbar">
             
-            <div class="flex items-center justify-between border-b border-surface-200 pb-4">
+            <div class="flex items-center justify-between border-b border-surface-200 pb-3">
               <div>
-                <span class="text-[11px] font-bold text-surface-600 uppercase tracking-wider block font-mono">Plano de Assinatura</span>
+                <span class="text-[11px] font-bold text-surface-600 uppercase tracking-wider block font-mono">Assinatura & Implantação</span>
                 <span class="text-xs text-brand-700 font-bold flex items-center space-x-1 mt-0.5">
                   <i class="ph-bold ph-shield-check"></i>
-                  <span>Garantia de Setup em 24h</span>
+                  <span>Setup Assistido em 24h</span>
                 </span>
               </div>
-              <span class="px-2.5 py-1 text-[10px] font-bold bg-brand-100 text-brand-900 rounded-md font-mono">Mais Escolhido</span>
+              <span class="px-2.5 py-1 text-[10px] font-bold bg-brand-100 text-brand-900 rounded-md font-mono" id="card-badge-plan">Mais Escolhido</span>
             </div>
 
-            <!-- Preço em Destaque -->
-            <div class="bg-gradient-to-br from-brand-50 to-surface-50 p-4 rounded-2xl border border-brand-200">
-              <span class="text-[11px] font-bold text-surface-600 block uppercase font-mono">Plano Escritório Pro</span>
-              <div class="flex items-baseline space-x-1.5 mt-1">
+            <!-- Preço & Taxa de Setup em Destaque -->
+            <div class="bg-gradient-to-br from-brand-50 to-surface-50 p-4 rounded-2xl border border-brand-200 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-surface-700 uppercase font-mono" id="card-plan-title">Plano Escritório Pro</span>
+                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-mono font-bold px-2 py-0.5 rounded">Setup Assistido</span>
+              </div>
+
+              <!-- Mensalidade -->
+              <div class="flex items-baseline space-x-1.5">
                 <span class="font-display text-3xl sm:text-4xl font-extrabold text-surface-900" id="card-price-display">R$ 890</span>
                 <span class="text-xs text-surface-600 font-bold">/mês</span>
               </div>
-              <p class="text-[11px] text-surface-600 mt-1">
+
+              <!-- Taxa de Setup Oficial Informada pelo Usuário -->
+              <div class="pt-2 border-t border-brand-200/60 flex items-center justify-between text-xs font-mono">
+                <span class="text-surface-600">Taxa de Setup:</span>
+                <strong class="text-brand-800 font-bold" id="card-setup-display">R$ 5.000 (única)</strong>
+              </div>
+
+              <p class="text-[11px] text-surface-600 mt-1" id="card-plan-summary">
                 Até 3 usuários simultâneos · 60 dossiês completos/mês com o timbre da sua banca.
               </p>
             </div>
 
             <!-- Seletor de Planos Rápido no Card -->
             <div class="space-y-2">
-              <label class="block text-[11px] font-bold text-surface-700 uppercase font-mono">Escolha o Porte do Seu Escritório:</label>
+              <label class="block text-[11px] font-bold text-surface-700 uppercase font-mono">Selecione o Porte do Seu Escritório:</label>
               <div class="grid grid-cols-3 gap-1.5 text-center text-xs font-mono">
                 <button onclick="selectCardPlan('solo')" id="plan-btn-solo" class="py-2 px-1 rounded-xl border border-surface-200 hover:border-brand-500 font-bold text-surface-700 transition">
                   Solo<br><span class="text-[10px] text-surface-500">R$ 390</span>
@@ -567,13 +798,13 @@
               </li>
               <li class="flex items-center space-x-2">
                 <i class="ph-bold ph-check text-emerald-600 font-bold"></i>
-                <span>Suporte direto com Rubens Loss</span>
+                <span>Treinamento e suporte com Rubens Loss</span>
               </li>
             </ul>
 
             <!-- Botões de Ação Imediata -->
             <div class="space-y-2 pt-2">
-              <a id="btn-whatsapp-card" href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Escrit%C3%B3rio%20Pro%20(R$%20890)%20do%20RecuperIA." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-emerald-700/20 flex items-center justify-center gap-2">
+              <a id="btn-whatsapp-card" href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Escrit%C3%B3rio%20Pro%20(Setup%20R$%205.000%20+%20R$%20890/m%C3%AAs)%20do%20RecuperIA." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-emerald-700/20 flex items-center justify-center gap-2">
                 <i class="ph-bold ph-whatsapp-logo text-base"></i>
                 <span>Contratar no WhatsApp</span>
               </a>
@@ -729,6 +960,28 @@
   </main>
 
   <!-- ========================================================================= -->
+  <!-- MODAL: CINEMA MODE DO VÍDEO OFICIAL DE APRESENTAÇÃO DO RECUPERIA -->
+  <!-- ========================================================================= -->
+  <div id="videoModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 hidden">
+    <div class="relative w-full max-w-4xl max-h-[90vh] flex flex-col items-center">
+      <div class="w-full flex justify-between items-center text-white mb-3 px-2">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+          <span class="font-bold text-xs font-mono">Vídeo Oficial de Apresentação · RecuperIA Enterprise</span>
+        </div>
+        <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition">
+          <i class="ph-bold ph-x text-base"></i>
+        </button>
+      </div>
+      <div class="relative w-full aspect-video rounded-3xl overflow-hidden bg-black shadow-2xl border border-white/20">
+        <video id="cinemaVideo" class="w-full h-full object-contain" controls playsinline>
+          <source src="assets/recuperia_apresentacao.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
   <!-- MODAL: VISUALIZADOR DO DOSSIÊ A4 TIMBRADO DEMONSTRATIVO -->
   <!-- ========================================================================= -->
   <div id="dossierModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
@@ -830,7 +1083,7 @@
   <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-surface-900/95 backdrop-blur-lg border-t border-white/10 flex items-center justify-between gap-3">
     <div>
       <div class="text-[10px] text-zinc-400 font-mono">RECUPERIA PRO</div>
-      <div class="text-xs font-bold text-brand-400">R$ 890/mês · Setup 24h</div>
+      <div class="text-xs font-bold text-brand-400">R$ 890/mês · Setup R$ 5.000</div>
     </div>
     <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20uma%20demonstra%C3%A7%C3%A3o%20do%20RecuperIA%20para%20o%20meu%20escrit%C3%B3rio." target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase rounded-xl flex items-center gap-1.5 shadow-md">
       <i class="ph-bold ph-whatsapp-logo text-base"></i>
@@ -873,6 +1126,14 @@
   <!-- SCRIPTS DE COMPORTAMENTO & INTERATIVIDADE (PADRÃO VIVANT IA) -->
   <!-- ========================================================================= -->
   <script>
+    // Rolagem suave até a seção
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
     // Alternância de Modo (Dossiê Comercial vs Cockpit)
     function switchMode(mode) {
       const viewDossier = document.getElementById('view-dossier');
@@ -905,6 +1166,74 @@
         btnDossierMob.className = "py-2 px-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition-all bg-brand-600 text-white shadow-sm";
         btnCockpitMob.className = "py-2 px-2 rounded-lg font-semibold flex items-center justify-center space-x-1.5 transition-all text-zinc-300 hover:text-white";
       }
+    }
+
+    // Toggle Vídeo de Fundo
+    let isVideoPlaying = true;
+    function toggleHeroVideo() {
+      const video = document.getElementById('hero-video');
+      const icon = document.getElementById('icon-toggle-video');
+      const text = document.getElementById('text-toggle-video');
+      if (!video) return;
+
+      if (isVideoPlaying) {
+        video.pause();
+        isVideoPlaying = false;
+        icon.className = 'ph-fill ph-play-circle text-brand-300 text-base';
+        text.textContent = 'Tocar Fundo';
+      } else {
+        video.play();
+        isVideoPlaying = true;
+        icon.className = 'ph-fill ph-pause-circle text-brand-300 text-base';
+        text.textContent = 'Pausar Fundo';
+      }
+    }
+
+    // Modal de Vídeo Oficial (Cinema Mode)
+    function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('cinemaVideo');
+      if (modal) modal.classList.remove('hidden');
+      if (video) {
+        video.currentTime = 0;
+        video.play();
+      }
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('cinemaVideo');
+      if (modal) modal.classList.add('hidden');
+      if (video) video.pause();
+    }
+
+    // Carrossel de Casos Reais (01.png a 05.png)
+    let currentSlide = 1;
+    function setCarouselSlide(n) {
+      currentSlide = n;
+      document.getElementById('carousel-current-index').textContent = n;
+      document.getElementById('carousel-main-img').src = `assets/0${n}.png`;
+
+      [1, 2, 3, 4, 5].forEach(i => {
+        const btn = document.getElementById(`thumb-c-${i}`);
+        if (i === n) {
+          btn.className = "h-16 rounded-xl overflow-hidden border-2 border-brand-600 focus:outline-none hover:scale-105 transition-all";
+        } else {
+          btn.className = "h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all";
+        }
+      });
+    }
+
+    function prevCarouselSlide() {
+      let next = currentSlide - 1;
+      if (next < 1) next = 5;
+      setCarouselSlide(next);
+    }
+
+    function nextCarouselSlide() {
+      let next = currentSlide + 1;
+      if (next > 5) next = 1;
+      setCarouselSlide(next);
     }
 
     // Casos Comerciais Interativos
@@ -951,35 +1280,51 @@
       [1, 2, 3].forEach(i => {
         const btn = document.getElementById(`case-btn-${i}`);
         if (i === id) {
-          btn.className = "p-3 rounded-xl bg-brand-600 text-white text-left text-xs font-bold transition flex flex-col justify-between shadow-sm";
+          btn.className = "p-3.5 rounded-2xl bg-brand-600 text-white text-left text-xs font-bold transition flex flex-col justify-between shadow-sm";
         } else {
-          btn.className = "p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 text-left text-xs font-bold transition flex flex-col justify-between border border-white/10";
+          btn.className = "p-3.5 rounded-2xl bg-white border border-surface-200 hover:border-brand-400 text-surface-800 text-left text-xs font-bold transition flex flex-col justify-between shadow-xs";
         }
       });
     }
 
-    // Seletor de Planos no Sticky Card
+    // Seletor de Planos no Sticky Card com as TAXAS DE SETUP OFICIAIS
     const plansData = {
       solo: {
+        title: "Plano Solo (Peritos)",
+        badge: "Perito Autônomo",
         price: "R$ 390",
+        setup: "R$ 2.500 (única)",
+        summary: "1 Usuário · 20 Dossiês A4 completos/mês · Buscas ilimitadas em 55M CNPJs.",
         dossiers: "20 Dossiês A4 completos por mês",
-        waText: "Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Solo%20(R$%20390)%20do%20RecuperIA."
+        waText: "Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Solo%20(Setup%20R$%202.500%20+%20R$%20390/m%C3%AAs)%20do%20RecuperIA."
       },
       pro: {
+        title: "Plano Escritório Pro",
+        badge: "Mais Escolhido",
         price: "R$ 890",
+        setup: "R$ 5.000 (única)",
+        summary: "Até 3 usuários simultâneos · 60 Dossiês A4 completos/mês com timbre da sua banca.",
         dossiers: "60 Dossiês A4 completos por mês",
-        waText: "Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Escrit%C3%B3rio%20Pro%20(R$%20890)%20do%20RecuperIA."
+        waText: "Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Escrit%C3%B3rio%20Pro%20(Setup%20R$%205.000%20+%20R$%20890/m%C3%AAs)%20do%20RecuperIA."
       },
       corp: {
+        title: "Plano Corporate / FIDC",
+        badge: "Grandes Bancas",
         price: "R$ 2.490",
+        setup: "R$ 10.000 (única)",
+        summary: "Até 10 usuários inclusos · 200 Dossiês A4 completos/mês · Integração via API.",
         dossiers: "200 Dossiês A4 completos por mês",
-        waText: "Ol%C3%A1%20Rubens!%20Tenho%20interesse%20no%20Plano%20Corporate%20(R$%202.490)%20do%20RecuperIA."
+        waText: "Ol%C3%A1%20Rubens!%20Tenho%20interesse%20no%20Plano%20Corporate%20(Setup%20R$%2010.000%20+%20R$%202.490/m%C3%AAs)%20do%20RecuperIA."
       }
     };
 
     function selectCardPlan(key) {
       const p = plansData[key];
+      document.getElementById('card-plan-title').textContent = p.title;
+      document.getElementById('card-badge-plan').textContent = p.badge;
       document.getElementById('card-price-display').textContent = p.price;
+      document.getElementById('card-setup-display').textContent = p.setup;
+      document.getElementById('card-plan-summary').textContent = p.summary;
       document.getElementById('card-feature-dossiers').textContent = p.dossiers;
       document.getElementById('btn-whatsapp-card').href = `https://wa.me/5527988140076?text=${p.waText}`;
 
@@ -993,6 +1338,32 @@
       });
     }
 
+    // Calculadora Financeira Interativa
+    const sliderCasos = document.getElementById('slider-casos');
+    const sliderTicket = document.getElementById('slider-ticket');
+
+    function updateRoiCalc() {
+      const casos = parseInt(sliderCasos.value, 10);
+      const ticket = parseInt(sliderTicket.value, 10);
+
+      document.getElementById('slider-label-casos').textContent = `${casos} processos`;
+      document.getElementById('slider-label-ticket').textContent = `R$ ${ticket.toLocaleString('pt-BR')}`;
+
+      const total = casos * ticket;
+      const patrimonioEncontrado = total * 0.35; // 35% de taxa conservadora
+      const honorarios = patrimonioEncontrado * 0.20; // 20% de honorários de êxito
+
+      document.getElementById('calc-patrimonio').textContent = `R$ ${patrimonioEncontrado.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}`;
+      document.getElementById('calc-honorarios').textContent = `R$ ${honorarios.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}`;
+
+      const custoTrimestre = 890 * 3 + 5000; // setup 5000 + 3 mensalidades
+      const roi = Math.round(honorarios / custoTrimestre);
+      document.getElementById('calc-roi').textContent = `> ${roi}x no trimestre`;
+    }
+
+    sliderCasos.addEventListener('input', updateRoiCalc);
+    sliderTicket.addEventListener('input', updateRoiCalc);
+
     // Modal de Dossiê A4
     function openDossierModal() {
       document.getElementById('dossierModal').classList.remove('hidden');
@@ -1005,6 +1376,14 @@
     function triggerSimulatedAlert() {
       alert(`[RecuperIA Cockpit]\n\n🚨 ALERTA OPERACIONAL DISPARADO:\n\nNovo bem penhorável identificado nos cartórios de imóveis (SAEC) para o processo Marcos Vinícius Silveira!\n\nUm alerta com o número da matrícula foi enviado diretamente para o WhatsApp do advogado.`);
     }
+
+    // Fechar modais ao clicar na tecla ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+        closeDossierModal();
+      }
+    });
   </script>
 </body>
 </html>
