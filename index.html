@@ -294,17 +294,13 @@
             <i class="ph-bold ph-video-camera text-sm"></i>
             <span>2. Cenas em Vídeo da Operação</span>
           </button>
-          <button onclick="scrollToSection('carrossel-casos')" class="text-surface-800 hover:text-brand-700 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 transition-colors">
-            <i class="ph-bold ph-images text-sm"></i>
-            <span>3. Casos Reais & Imagens do Projeto</span>
-          </button>
           <button onclick="scrollToSection('monetizacao-banca')" class="text-surface-800 hover:text-brand-700 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 transition-colors">
             <i class="ph-bold ph-currency-dollar text-sm"></i>
-            <span>4. Como o Escritório Fatura</span>
+            <span>3. Como o Escritório Fatura</span>
           </button>
           <button onclick="scrollToSection('calculadora-roi')" class="text-surface-800 hover:text-brand-700 pb-1 flex items-center space-x-1.5 whitespace-nowrap shrink-0 transition-colors">
             <i class="ph-bold ph-calculator text-sm"></i>
-            <span>5. Calculadora de Honorários</span>
+            <span>4. Calculadora de Honorários</span>
           </button>
         </nav>
       </div>
@@ -525,68 +521,7 @@
             </div>
           </section>
 
-          <!-- SEÇÃO 3: CARROSSEL OFICIAL DE CASOS REAIS & IMAGENS DO PROJETO -->
-          <section id="carrossel-casos" class="space-y-6">
-            <div class="border-b border-surface-200 pb-4 flex items-end justify-between">
-              <div>
-                <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Material Gráfico Oficial</span>
-                <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-surface-900 mt-1">
-                  Apresentação Comercial em Carrossel
-                </h2>
-              </div>
-              <span class="text-xs text-brand-800 bg-brand-50 border border-brand-200 px-3 py-1 rounded-full font-bold">
-                5 Slides Estratégicos
-              </span>
-            </div>
-
-            <!-- Slideshow do Carrossel do RecuperIA -->
-            <div class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
-              
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-brand-800 uppercase tracking-wider flex items-center space-x-1.5">
-                  <i class="ph-bold ph-slideshow text-brand-600 text-base"></i>
-                  <span>Slide <span id="carousel-current-index">1</span> de 5</span>
-                </span>
-                
-                <!-- Botões de Navegação -->
-                <div class="flex items-center space-x-2">
-                  <button onclick="prevCarouselSlide()" class="w-8 h-8 rounded-lg bg-surface-100 hover:bg-brand-600 hover:text-white text-surface-800 flex items-center justify-center transition-colors">
-                    <i class="ph-bold ph-caret-left"></i>
-                  </button>
-                  <button onclick="nextCarouselSlide()" class="w-8 h-8 rounded-lg bg-surface-100 hover:bg-brand-600 hover:text-white text-surface-800 flex items-center justify-center transition-colors">
-                    <i class="ph-bold ph-caret-right"></i>
-                  </button>
-                </div>
-              </div>
-
-              <!-- Imagem Principal do Slide -->
-              <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden border border-surface-200 bg-surface-900">
-                <img id="carousel-main-img" src="assets/01.png" alt="Slide Carrossel RecuperIA" class="w-full h-full object-contain transition-all duration-500">
-              </div>
-
-              <!-- Miniaturas Clicáveis -->
-              <div class="grid grid-cols-5 gap-2">
-                <button onclick="setCarouselSlide(1)" id="thumb-c-1" class="h-16 rounded-xl overflow-hidden border-2 border-brand-600 focus:outline-none hover:scale-105 transition-all">
-                  <img src="assets/01.png" class="w-full h-full object-cover">
-                </button>
-                <button onclick="setCarouselSlide(2)" id="thumb-c-2" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
-                  <img src="assets/02.png" class="w-full h-full object-cover">
-                </button>
-                <button onclick="setCarouselSlide(3)" id="thumb-c-3" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
-                  <img src="assets/03.png" class="w-full h-full object-cover">
-                </button>
-                <button onclick="setCarouselSlide(4)" id="thumb-c-4" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
-                  <img src="assets/04.png" class="w-full h-full object-cover">
-                </button>
-                <button onclick="setCarouselSlide(5)" id="thumb-c-5" class="h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all">
-                  <img src="assets/05.png" class="w-full h-full object-cover">
-                </button>
-              </div>
-
-            </div>
-          </section>
-
-          <!-- SEÇÃO 4: COMO A SUA BANCA MONETIZA E COBRA PELO SERVIÇO -->
+          <!-- SEÇÃO 3: COMO A SUA BANCA MONETIZA E COBRA PELO SERVIÇO -->
           <section id="monetizacao-banca" class="space-y-6">
             <div class="border-b border-surface-200 pb-4">
               <span class="text-xs font-bold tracking-widest text-emerald-700 uppercase">Modelo de Negócio para o Escritório</span>
@@ -637,7 +572,7 @@
             </div>
           </section>
 
-          <!-- SEÇÃO 5: CALCULADORA INTERATIVA DE HONORÁRIOS & ROI -->
+          <!-- SEÇÃO 4: CALCULADORA INTERATIVA DE HONORÁRIOS & ROI -->
           <section id="calculadora-roi" class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
             <div class="border-b border-surface-200 pb-4">
               <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Simulador de Retorno do Investimento</span>
@@ -675,45 +610,6 @@
                   <span class="text-[10px] text-surface-500 uppercase block">ROI sobre o Plano Pro</span>
                   <strong class="text-lg text-brand-700" id="calc-roi">> 50x</strong>
                 </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- SEÇÃO 6: DEPOIMENTOS E AVALIAÇÕES DE SÓCIOS E GESTORES -->
-          <section class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-surface-200 pb-4 gap-4">
-              <div>
-                <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Segurança Jurídica & Resultados Comprovados</span>
-                <h3 class="font-display text-2xl font-bold text-surface-900 mt-0.5">O Que Dizem Nossos Clientes</h3>
-              </div>
-              <div class="flex items-center space-x-2 bg-brand-50 px-3.5 py-1.5 rounded-full border border-brand-200">
-                <span class="text-amber-500 flex text-sm">★★★★★</span>
-                <strong class="text-xs font-bold text-brand-900">4.9 / 5.0</strong>
-                <span class="text-[11px] text-surface-700">(Bancas de Advocacia e Fundos)</span>
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div class="p-4 rounded-xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
-                <div class="flex items-center space-x-2">
-                  <span class="text-amber-500 text-xs">★★★★★</span>
-                  <strong class="text-surface-900 font-bold">"Destravamos R$ 850 mil em 15 dias"</strong>
-                </div>
-                <p class="text-surface-700 leading-relaxed">
-                  "Tínhamos uma execução parada há 3 anos com Sisbajud negativo. Em 2 segundos no RecuperIA localizamos 2 imóveis em nome da esposa no regime de comunhão. O juiz deferiu a penhora na semana seguinte."
-                </p>
-                <span class="text-[11px] text-brand-700 font-semibold block">— Dr. Henrique Castilho (Sócio de Contencioso Cível · SP)</span>
-              </div>
-
-              <div class="p-4 rounded-xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
-                <div class="flex items-center space-x-2">
-                  <span class="text-amber-500 text-xs">★★★★★</span>
-                  <strong class="text-surface-900 font-bold">"Evitou um calote de R$ 340 mil"</strong>
-                </div>
-                <p class="text-surface-700 leading-relaxed">
-                  "Usamos na mesa de crédito antes de liberar duplicatas. O cliente tinha nome limpo no Serasa, mas o RecuperIA acusou sócia de 78 anos laranja e capital incompatível. Não fechamos e o concorrente tomou calote."
-                </p>
-                <span class="text-[11px] text-brand-700 font-semibold block">— Rodrigo Vasconcelos (Diretor de Riscos em Factoring · MG)</span>
               </div>
             </div>
           </section>
@@ -1205,35 +1101,6 @@
       const video = document.getElementById('cinemaVideo');
       if (modal) modal.classList.add('hidden');
       if (video) video.pause();
-    }
-
-    // Carrossel de Casos Reais (01.png a 05.png)
-    let currentSlide = 1;
-    function setCarouselSlide(n) {
-      currentSlide = n;
-      document.getElementById('carousel-current-index').textContent = n;
-      document.getElementById('carousel-main-img').src = `assets/0${n}.png`;
-
-      [1, 2, 3, 4, 5].forEach(i => {
-        const btn = document.getElementById(`thumb-c-${i}`);
-        if (i === n) {
-          btn.className = "h-16 rounded-xl overflow-hidden border-2 border-brand-600 focus:outline-none hover:scale-105 transition-all";
-        } else {
-          btn.className = "h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none hover:scale-105 transition-all";
-        }
-      });
-    }
-
-    function prevCarouselSlide() {
-      let next = currentSlide - 1;
-      if (next < 1) next = 5;
-      setCarouselSlide(next);
-    }
-
-    function nextCarouselSlide() {
-      let next = currentSlide + 1;
-      if (next > 5) next = 1;
-      setCarouselSlide(next);
     }
 
     // Casos Comerciais Interativos
