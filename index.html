@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RecuperIA Enterprise | Inteligência Forense de Ativos, Desblindagem & Recuperação de Crédito</title>
-  <meta name="description" content="A máquina forense B2B que varre 55 milhões de empresas, desvenda holdings, sócios ocultos e lê matrículas de cartórios com IA para recuperar execuções travadas em 2 segundos.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>RecuperIA Enterprise | Apresentação Comercial & Cockpit de Investigação Patrimonial</title>
+  <meta name="description" content="Apresentação Comercial e Cockpit de Inteligência de Ativos, Desblindagem Societária e Recuperação de Crédito para Escritórios de Advocacia e Gestores de Risco.">
 
   <!-- Favicon / Brand Icon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230B1120%22/><path d=%22M50 15 L82 32 L82 68 L50 85 L18 68 L18 32 Z%22 fill=%22none%22 stroke=%22%23E3A23F%22 stroke-width=%226%22/><text x=%2250%22 y=%2260%22 font-size=%2238%22 font-family=%22system-ui,sans-serif%22 font-weight=%22900%22 fill=%22%23E3A23F%22 text-anchor=%22middle%22>R</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230F172A%22/><text x=%2250%22 y=%2266%22 font-size=%2246%22 font-family=%22system-ui,sans-serif%22 font-weight=%22900%22 fill=%22%23F59E0B%22 text-anchor=%22middle%22>R</text></svg>">
 
-  <!-- Google Fonts: Plus Jakarta Sans, Outfit & JetBrains Mono -->
+  <!-- Google Fonts: Outfit + Plus Jakarta Sans + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,16 +30,31 @@
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            forensic: {
-              gold: '#E3A23F',
-              'gold-light': '#FCD34D',
-              'gold-dark': '#B47820',
-              cyan: '#00F2FE',
-              'cyan-dark': '#0EA5E9',
-              emerald: '#10B981',
-              dark: '#06080F',
-              card: '#0B1120',
-              border: 'rgba(255, 255, 255, 0.08)',
+            brand: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+              800: '#92400e',
+              900: '#78350f',
+              950: '#451a03',
+            },
+            surface: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
             }
           }
         }
@@ -47,1519 +63,948 @@
   </script>
 
   <style>
+    /* Prevenção de quebra de layout mobile e preservação de position: sticky no desktop (Padrão Vivant) */
     html, body {
       overflow-x: clip;
       max-width: 100vw;
       width: 100%;
-      background-color: #06080F;
-      color: #F8FAFC;
+      -webkit-text-size-adjust: 100%;
+      touch-action: manipulation;
+    }
+    * {
+      box-sizing: border-box;
     }
 
-    /* Cyber grid overlay */
-    .cyber-grid {
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    /* Glassmorphism */
-    .glass-nav {
-      background: rgba(6, 8, 15, 0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .glass-card {
-      background: rgba(11, 17, 32, 0.75);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .glass-card-gold {
-      background: linear-gradient(135deg, rgba(227, 162, 63, 0.06) 0%, rgba(11, 17, 32, 0.85) 100%);
-      border: 1px solid rgba(227, 162, 63, 0.3);
-    }
-
-    .glass-card-cyan {
-      background: linear-gradient(135deg, rgba(0, 242, 254, 0.05) 0%, rgba(11, 17, 32, 0.85) 100%);
-      border: 1px solid rgba(0, 242, 254, 0.25);
-    }
-
-    /* Subtle Radar Pulse */
-    @keyframes radarSweep {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .radar-sweep {
-      animation: radarSweep 4s linear infinite;
-      transform-origin: center;
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.04); }
-    }
-    .glow-pulse {
-      animation: pulseGlow 3s ease-in-out infinite;
-    }
-
-    /* Range slider custom styling */
-    input[type=range] {
-      accent-color: #E3A23F;
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 7px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #06080F;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1E293B;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #E3A23F;
-    }
-
-    /* Desktop sticky sidebar */
+    /* Fixação Inteligente do Card Comercial no Desktop (Sticky Permanente ao Rolar) */
     @media (min-width: 1024px) {
-      .sticky-pricing-card {
+      .desktop-sticky-card {
         position: -webkit-sticky !important;
         position: sticky !important;
         top: 6.5rem !important;
+        z-index: 30 !important;
       }
+    }
+
+    /* Transições e Efeitos de Movimento Modernos */
+    .glass-header {
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #d97706;
+      border-radius: 999px;
+    }
+    .pulse-badge {
+      animation: subtlePulse 2s infinite ease-in-out;
+    }
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.88; transform: scale(1.03); }
+    }
+    .hover-lift {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-forensic-gold selection:text-black cyber-grid">
+<body class="bg-surface-50 text-surface-900 font-sans antialiased selection:bg-brand-500 selection:text-white custom-scrollbar w-full">
 
   <!-- ========================================================================= -->
-  <!-- TOP BANNER DE CONEXÃO ECOSSISTEMA -->
+  <!-- TOP GLOBAL SWITCHER: VISÃO DO DOSSIÊ (CLIENTE) vs. COCKPIT DO ESCRITÓRIO -->
   <!-- ========================================================================= -->
-  <aside aria-label="Ecosystem Banner" class="bg-gradient-to-r from-amber-950/60 via-slate-900 to-sky-950/60 border-b border-amber-500/20 text-xs py-2 px-4 text-center">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-      <div class="flex items-center gap-2 text-amber-200">
-        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-semibold">Plataforma Especialista Creative Web:</span>
-        <span class="text-slate-300 hidden md:inline">Inteligência Forense de Ativos & Desblindagem Societária para Advocacia e FIDC</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <a href="https://rubensloss.github.io/seguroflow-crm/hub.html" class="inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 font-bold transition-colors">
-          <span>✦ Conhecer todas as soluções do ecossistema</span>
-          <i class="ph ph-arrow-right font-bold"></i>
-        </a>
-      </div>
-    </div>
-  </aside>
-
-  <!-- ========================================================================= -->
-  <!-- HEADER / BARRA DE NAVEGAÇÃO -->
-  <!-- ========================================================================= -->
-  <header class="sticky top-0 z-50 glass-nav">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+  <header class="sticky top-0 z-50 glass-header text-white">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
       
-      <!-- Logo & Branding -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 flex items-center justify-center font-black text-black text-xl shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-          <i class="ph ph-shield-check text-2xl font-bold"></i>
+      <!-- Marca da Plataforma (RECUPERIA ENTERPRISE) -->
+      <a href="index.html" class="flex items-center space-x-2 sm:space-x-3 group cursor-pointer shrink-0">
+        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-brand-500 via-amber-400 to-yellow-200 flex items-center justify-center text-brand-950 font-extrabold font-display text-base sm:text-xl shadow-md group-hover:scale-105 transition-transform duration-300">
+          R
         </div>
         <div>
-          <div class="flex items-center gap-2">
-            <span class="font-display font-extrabold text-lg text-white tracking-tight">Recuper<span class="text-amber-400">IA</span></span>
-            <span class="font-mono text-[9px] uppercase px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30 font-bold">Enterprise</span>
+          <div class="flex items-center space-x-1.5">
+            <span class="font-display tracking-wider text-xs sm:text-sm font-extrabold uppercase block group-hover:text-brand-300 transition-colors">RECUPER<span class="text-brand-400">IA</span></span>
+            <span class="px-1.5 py-0.5 rounded-md bg-gradient-to-r from-amber-600 to-amber-500 text-black font-extrabold text-[9px] tracking-widest shadow-sm">SAAS</span>
           </div>
-          <p class="text-[10.5px] text-slate-400 font-mono tracking-wider uppercase">Asset Intelligence & Forensics</p>
+          <span class="text-[9px] text-zinc-400 tracking-wider uppercase hidden sm:block">Inteligência de Ativos & Desblindagem</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu -->
-      <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
-        <a href="#motores" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-          <i class="ph ph-cpu text-amber-400"></i> Os 6 Motores
-        </a>
-        <a href="#simulador" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-          <i class="ph ph-magnifying-glass text-cyan-400"></i> Simulador Forense
-        </a>
-        <a href="#calculadora" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-          <i class="ph ph-calculator text-emerald-400"></i> Calculadora ROI
-        </a>
-        <a href="#dossie" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-          <i class="ph ph-file-text text-amber-400"></i> Dossiê & Minuta
-        </a>
-        <a href="#planos" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
-          <i class="ph ph-currency-circle-dollar text-emerald-400"></i> Planos
-        </a>
-        <a href="#faq" class="hover:text-amber-400 transition-colors">FAQ</a>
-      </nav>
-
-      <!-- Right CTAs -->
-      <div class="flex items-center gap-3">
-        <!-- Status Badge -->
-        <div class="hidden sm:flex items-center gap-2 font-mono text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>55M CNPJs Online</span>
-        </div>
-
-        <!-- WhatsApp CTA Rubens Loss -->
-        <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Conheci%20o%20RecuperIA%20Enterprise%20e%20gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20de%20localiza%C3%A7%C3%A3o%20de%20ativos%20e%20desblindagem%20forense." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 transition-all hover:-translate-y-0.5">
-          <i class="ph ph-whatsapp-logo text-base"></i>
-          <span>Agendar Demo</span>
-        </a>
-
-        <!-- Mobile Menu Toggle -->
-        <button id="mobileMenuBtn" aria-label="Abrir Menu" class="lg:hidden p-2 rounded-lg bg-slate-800 text-slate-200 border border-white/10">
-          <i class="ph ph-list text-2xl"></i>
+      <!-- Seletor de Modo Desktop (Padrão Vivant IA) -->
+      <div class="hidden md:flex items-center bg-surface-900/90 p-1 rounded-full border border-white/10 shadow-inner">
+        <button id="btn-mode-dossier" onclick="switchMode('dossier')" class="px-4 py-1.5 rounded-full text-xs font-bold flex items-center space-x-2 transition-all duration-300 bg-brand-600 text-white shadow-sm hover:scale-[1.02] active:scale-[0.98]">
+          <i class="ph-bold ph-file-text"></i>
+          <span>Visão do Dossiê Executivo (Apresentação ao Cliente)</span>
+        </button>
+        <button id="btn-mode-cockpit" onclick="switchMode('cockpit')" class="px-4 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-2 transition-all duration-300 text-zinc-300 hover:text-white hover:scale-[1.02] active:scale-[0.98]">
+          <i class="ph-bold ph-chart-pie-slice"></i>
+          <span>Cockpit do Escritório (Gestão & Carteira)</span>
+          <span class="ml-1 px-2 py-0.5 text-[9px] font-bold bg-brand-600 text-white rounded-full">PRO</span>
         </button>
       </div>
+
+      <!-- Ações Rápidas de Cabeçalho (Responsivo) -->
+      <div class="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
+        <!-- Link para o Hub Geral -->
+        <a href="https://rubensloss.github.io/creative-web/" target="_blank" class="flex items-center space-x-1 px-2.5 py-1.5 text-[11px] sm:text-xs font-bold rounded-lg bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/40 transition-all hover:scale-105" title="Conhecer todas as soluções do ecossistema">
+          <i class="ph-bold ph-sparkle text-sky-400"></i>
+          <span class="hidden sm:inline">Ecossistema</span>
+          <span class="sm:hidden">Hub</span>
+        </a>
+
+        <!-- Botão Ver Laudo Demonstrativo -->
+        <button onclick="openDossierModal()" class="flex items-center space-x-1 px-2.5 py-1.5 text-[11px] sm:text-xs font-bold rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition-all hover:scale-105">
+          <i class="ph-fill ph-file-pdf text-amber-400 text-xs sm:text-sm"></i>
+          <span class="hidden sm:inline">Ver Dossiê A4</span>
+          <span class="sm:hidden">Dossiê</span>
+        </button>
+
+        <!-- CTA Principal WhatsApp Rubens Loss -->
+        <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20comercial%20do%20RecuperIA%20Enterprise." target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 px-3 sm:px-4 py-1.5 text-xs font-bold rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white transition-all shadow-md hover:scale-105 active:scale-95">
+          <i class="ph-bold ph-whatsapp-logo text-xs sm:text-sm"></i>
+          <span>Contratar</span>
+        </a>
+      </div>
+
     </div>
 
-    <!-- Mobile Drawer Navigation -->
-    <div id="mobileDrawer" class="hidden lg:hidden bg-slate-950/95 border-b border-white/10 px-6 py-5 flex flex-col gap-4 text-sm font-medium">
-      <a href="#motores" class="py-2 text-slate-200 hover:text-amber-400 border-b border-white/5 flex items-center gap-2">
-        <i class="ph ph-cpu text-amber-400"></i> Os 6 Motores Forenses
-      </a>
-      <a href="#simulador" class="py-2 text-slate-200 hover:text-cyan-400 border-b border-white/5 flex items-center gap-2">
-        <i class="ph ph-magnifying-glass text-cyan-400"></i> Testar Simulador Interativo
-      </a>
-      <a href="#calculadora" class="py-2 text-slate-200 hover:text-emerald-400 border-b border-white/5 flex items-center gap-2">
-        <i class="ph ph-calculator text-emerald-400"></i> Calculadora de Honorários e ROI
-      </a>
-      <a href="#dossie" class="py-2 text-slate-200 hover:text-amber-400 border-b border-white/5 flex items-center gap-2">
-        <i class="ph ph-file-text text-amber-400"></i> Dossiê A4 e Minutas Judiciais
-      </a>
-      <a href="#planos" class="py-2 text-slate-200 hover:text-emerald-400 border-b border-white/5 flex items-center gap-2">
-        <i class="ph ph-currency-circle-dollar text-emerald-400"></i> Planos & Valores
-      </a>
-      <a href="#faq" class="py-2 text-slate-200 hover:text-slate-400 flex items-center gap-2">
-        <i class="ph ph-question text-slate-400"></i> Perguntas Frequentes
-      </a>
-      <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20uma%20demonstra%C3%A7%C3%A3o%20do%20RecuperIA%20no%20meu%20escrit%C3%B3rio." target="_blank" rel="noopener noreferrer" class="mt-2 text-center py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-black font-extrabold uppercase text-xs">
-        <i class="ph ph-whatsapp-logo mr-1"></i> Falar com Rubens Loss no WhatsApp
-      </a>
+    <!-- SELETOR DE MODO MOBILE (Segmented Control 100% nativo para smartphones) -->
+    <div class="md:hidden px-3 pb-2.5 pt-1 bg-surface-900 border-t border-white/10">
+      <div class="grid grid-cols-2 p-1 bg-black/50 rounded-xl border border-white/10 text-xs">
+        <button id="btn-mode-dossier-mob" onclick="switchMode('dossier')" class="py-2 px-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition-all bg-brand-600 text-white shadow-sm">
+          <i class="ph-bold ph-file-text text-sm"></i>
+          <span>Apresentação Dossiê</span>
+        </button>
+        <button id="btn-mode-cockpit-mob" onclick="switchMode('cockpit')" class="py-2 px-2 rounded-lg font-semibold flex items-center justify-center space-x-1.5 transition-all text-zinc-300 hover:text-white">
+          <i class="ph-bold ph-chart-pie-slice text-sm"></i>
+          <span>Cockpit Gestão</span>
+          <span class="px-1.5 py-0.2 text-[8px] font-bold bg-brand-600 text-white rounded">PRO</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <!-- ========================================================================= -->
-  <!-- HERO SECTION: O IMPACTO FORENSE -->
+  <!-- MODO 1: VISÃO DA APRESENTAÇÃO COMERCIAL (O QUE O SEU CLIENTE VÊ) -->
   <!-- ========================================================================= -->
-  <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
-    <!-- Glow backgrounds -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-amber-500/10 via-cyan-500/10 to-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+  <main id="view-dossier" class="transition-opacity duration-300">
+    
+    <!-- Hero Comercial Elegante & Executivo -->
+    <section class="relative bg-surface-900 text-white overflow-hidden py-12 sm:py-20 border-b border-surface-800">
       
-      <!-- Top Pill -->
-      <div class="flex justify-center mb-6">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 to-cyan-500/10 border border-amber-500/30 text-amber-300 font-mono text-xs uppercase tracking-wider shadow-inner">
-          <i class="ph ph-detective text-amber-400 text-base"></i>
-          <span>Engenharia Forense de Recuperação de Ativos · Lawtech & Risktech</span>
-        </div>
-      </div>
+      <!-- Fundo Tecnológico Sutil com Gradiente Escuro -->
+      <div class="absolute inset-0 z-0 bg-gradient-to-r from-surface-950 via-surface-900 to-amber-950/40"></div>
+      <div class="absolute -top-32 right-10 w-96 h-96 bg-brand-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <!-- Main Headline -->
-      <div class="text-center max-w-4xl mx-auto mb-10">
-        <h1 class="font-display font-black text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15] mb-6">
-          Localize Bens Ocultos, Quebre Blindagens Societárias e <span class="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent">Destrave Execuções em 2 Segundos</span>
-        </h1>
-        <p class="text-base sm:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto font-light">
-          A primeira plataforma B2B com motor DuckDB operando sobre <strong class="text-white font-semibold">55 milhões de CNPJs</strong>, leitura de matrículas com IA e rastreamento de laranjas que transforma processos dados como perdidos em <strong class="text-amber-400 font-semibold">penhoras imediatas</strong>.
-        </p>
-
-        <!-- CTA Action Buttons -->
-        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#simulador" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-300 hover:to-amber-500 text-black font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-amber-500/20 hover:shadow-amber-500/35 transition-all flex items-center justify-center gap-2">
-            <i class="ph ph-lightning text-xl font-bold"></i>
-            <span>Testar Varredura Forense Ao Vivo</span>
-          </a>
-          <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Quero%20conhecer%20o%20RecuperIA%20Enterprise%20para%20o%20meu%20escrit%C3%B3rio." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-7 py-4 rounded-xl glass-card hover:bg-slate-800/80 text-white font-bold text-sm tracking-wide border border-white/10 hover:border-amber-400/40 transition-all flex items-center justify-center gap-2">
-            <i class="ph ph-whatsapp-logo text-emerald-400 text-xl"></i>
-            <span>Falar com Rubens Loss (27) 98814-0076</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Trust Metrics Strip -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-16">
-        <div class="glass-card p-4 rounded-2xl border-white/5 text-center">
-          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-amber-400 mb-1">R$ 2,8 Tri</div>
-          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono">Em Execuções Travadas (CNJ)</div>
-          <p class="text-[10px] text-slate-400 mt-1">Mercado colossal de créditos sem localização de bens.</p>
-        </div>
-        <div class="glass-card p-4 rounded-2xl border-white/5 text-center">
-          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-cyan-400 mb-1">55.482.119</div>
-          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono">Empresas Indexadas Localmente</div>
-          <p class="text-[10px] text-slate-400 mt-1">Busca relacional em DuckDB a custo R$ 0,00.</p>
-        </div>
-        <div class="glass-card p-4 rounded-2xl border-white/5 text-center">
-          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-emerald-400 mb-1">&lt; 80 ms</div>
-          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono">Velocidade de Desblindagem</div>
-          <p class="text-[10px] text-slate-400 mt-1">Mapeamento em cascata de sócios, cônjuges e laranjas.</p>
-        </div>
-        <div class="glass-card p-4 rounded-2xl border-white/5 text-center">
-          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-amber-300 mb-1">100% Nativo</div>
-          <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 font-mono">Dossiê A4 Timbrado + Minuta</div>
-          <p class="text-[10px] text-slate-400 mt-1">Pronto para protocolo judicial e reunião executiva.</p>
-        </div>
-      </div>
-
-      <!-- Live Radar Forense Mockup / Terminal Preview -->
-      <div class="max-w-5xl mx-auto rounded-3xl p-1 bg-gradient-to-b from-amber-500/30 via-slate-700/30 to-transparent shadow-2xl">
-        <div class="glass-card rounded-[22px] overflow-hidden border border-white/10">
-          
-          <!-- Terminal Title Bar -->
-          <div class="bg-slate-900/90 px-6 py-3.5 border-b border-white/10 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-              <span class="text-xs font-mono text-slate-400 ml-2">recuperia-terminal-forense-v3.0.sh · DuckDB High-Performance Vector</span>
-            </div>
-            <div class="flex items-center gap-3 font-mono text-[11px]">
-              <span class="text-slate-400">STATUS:</span>
-              <span class="text-emerald-400 font-bold flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> PRONTO P/ INVESTIGAÇÃO
-              </span>
-            </div>
-          </div>
-
-          <!-- Radar Visual Mockup -->
-          <div class="p-6 md:p-8 bg-slate-950/80 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            
-            <!-- Left Info / Target Summary -->
-            <div class="lg:col-span-5 space-y-4">
-              <div class="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">
-                <i class="ph ph-target"></i> Caso Real Investigado
-              </div>
-              <h3 class="font-display font-bold text-2xl text-white">Devedor com Sisbajud Negativo Encontrado com R$ 2.450.000</h3>
-              <p class="text-sm text-slate-300 leading-relaxed">
-                O devedor declarava não possuir patrimônio em conta corrente. Em <strong class="text-amber-400">1,8 segundo</strong>, o RecuperIA identificou:
-              </p>
-              
-              <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
-                <li class="flex items-start gap-2 bg-slate-900/60 p-2.5 rounded-lg border border-white/5">
-                  <i class="ph ph-house-line text-emerald-400 text-base flex-shrink-0 mt-0.5"></i>
-                  <div>
-                    <strong class="text-white">3 Imóveis em Cartório de Registro:</strong>
-                    <div class="text-slate-400">Cobertura em Vila Velha + 2 Galpões Logísticos registrados em nome de Holding Familiar recém-criada.</div>
-                  </div>
-                </li>
-                <li class="flex items-start gap-2 bg-slate-900/60 p-2.5 rounded-lg border border-white/5">
-                  <i class="ph ph-car text-cyan-400 text-base flex-shrink-0 mt-0.5"></i>
-                  <div>
-                    <strong class="text-white">Frota & Embarcação Ocultas:</strong>
-                    <div class="text-slate-400">BMW X6 e Lancha Fibrafort 310 blindadas sob CNPJ de sócio oculto com capital incompatível.</div>
-                  </div>
-                </li>
-                <li class="flex items-start gap-2 bg-slate-900/60 p-2.5 rounded-lg border border-white/5">
-                  <i class="ph ph-warning-octagon text-amber-400 text-base flex-shrink-0 mt-0.5"></i>
-                  <div>
-                    <strong class="text-white">Score "Nota de Laranja": 91/100:</strong>
-                    <div class="text-slate-400">Detecção de fraude contra credores (Art. 158 CC) com petição de penhora já redigida.</div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Right Visual Graphic -->
-            <div class="lg:col-span-7 relative flex justify-center">
-              <div class="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden border border-amber-500/20 bg-slate-900/90 p-4 flex flex-col justify-between shadow-2xl">
-                <!-- Background Image or Visual -->
-                <img src="assets/hero_radar.jpg" alt="Radar Forense RecuperIA" class="absolute inset-0 w-full h-full object-cover opacity-35 mix-blend-screen" onerror="this.style.display='none'">
-                
-                <!-- Radar Circle Visual Component -->
-                <div class="relative z-10 flex items-center justify-between border-b border-white/10 pb-3">
-                  <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 rounded-full bg-cyan-400 animate-ping"></div>
-                    <span class="font-mono text-xs text-cyan-300 font-bold">REDE RELACIONAL DE ATIVOS DETECTADA</span>
-                  </div>
-                  <span class="font-mono text-xs text-amber-400 font-bold bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/30">FRAUDE EVIDENCIADA</span>
-                </div>
-
-                <!-- Forensic Center Nodes Simulation -->
-                <div class="relative z-10 my-auto py-4 space-y-3 font-mono text-[11px]">
-                  <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950/90 border border-white/10">
-                    <span class="text-slate-400">ALVO CENTRAL:</span>
-                    <span class="text-white font-bold">MARCOS V. SILVEIRA (CPF ***.482.107-**)</span>
-                  </div>
-                  <div class="flex items-center justify-between p-3 rounded-xl bg-amber-950/40 border border-amber-500/30 text-amber-200">
-                    <span>HOLDING PATRIMONIAL:</span>
-                    <span class="font-bold">M.V.S. PARTICIPAÇÕES LTDA (R$ 1.8M CAPITAL)</span>
-                  </div>
-                  <div class="flex items-center justify-between p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-cyan-200">
-                    <span>CÔNJUGE EM COMUNHÃO:</span>
-                    <span class="font-bold">JULIANA F. SILVEIRA (2 VEÍCULOS + MATRÍCULA)</span>
-                  </div>
-                  <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-200">
-                    <span>BENS PENHORÁVEIS:</span>
-                    <span class="font-bold text-emerald-400">R$ 2.450.000,00 REUNIDOS</span>
-                  </div>
-                </div>
-
-                <!-- Footer of Card -->
-                <div class="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between">
-                  <span class="font-mono text-[10px] text-slate-400">CERTIFICADO PERICIAL TIMBRADO</span>
-                  <a href="#simulador" class="font-mono text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center gap-1">
-                    <span>TESTAR SIMULAÇÃO</span> <i class="ph ph-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SEÇÃO: O DIAGNÓSTICO DA DOR (POR QUE O MERCADO TRADICIONAL FALHA) -->
-  <!-- ========================================================================= -->
-  <section class="py-20 bg-slate-950/60 border-y border-white/5 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-          Diagnóstico do Mercado de Crédito & Contencioso
-        </span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-4 mb-4">
-          Por Que 70% das Execuções Terminam sem Recuperar 1 Centavo?
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base">
-          Devedores profissionais não colocam dinheiro no banco. Eles usam holdings familiares, doações com reserva de usufruto e empresas no nome de terceiros.
-        </p>
-      </div>
-
-      <!-- Comparison Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         
-        <!-- Falha 1: Bureaus Convencionais -->
-        <div class="glass-card p-6 rounded-2xl border-white/10 hover:border-red-500/30 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-x-circle"></i>
-          </div>
-          <h3 class="font-display font-bold text-lg text-white mb-2">Bureaus Antigos (Serasa / SPC)</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Apenas mostram protestos passados e score estático. Custam fortunas anuais (R$ 30k a R$ 80k/ano) e entregam planilhas brutas sem qualquer inteligência jurídica de desblindagem.
-          </p>
-          <div class="text-[11px] font-mono text-red-400 bg-red-500/5 p-2.5 rounded-lg border border-red-500/10">
-            <strong>Gargalo:</strong> Não enxergam a arquitetura da fraude societária.
-          </div>
+        <!-- Badges Comerciais -->
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+          <span class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-white/10 text-white border border-white/20 backdrop-blur-md">
+            <i class="ph-fill ph-shield-check text-brand-400"></i>
+            <span>Laudo Homologado nos Tribunais (TJSP, TJRJ, TRF)</span>
+          </span>
+          <span class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-brand-600 text-white shadow-lg pulse-badge">
+            <i class="ph-bold ph-lightning"></i>
+            <span>Resultado em 2 Segundos</span>
+          </span>
+          <button onclick="openDossierModal()" class="inline-flex items-center space-x-1.5 px-3 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold bg-white/20 hover:bg-white/30 text-white border border-white/30 backdrop-blur-md transition-all active:scale-95 cursor-pointer">
+            <i class="ph-fill ph-file-pdf text-amber-300 text-sm"></i>
+            <span>Ver Exemplo do Dossiê A4 Timbrado</span>
+          </button>
         </div>
 
-        <!-- Falha 2: Perícias Artesanais -->
-        <div class="glass-card p-6 rounded-2xl border-white/10 hover:border-red-500/30 transition-colors">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-clock-countdown"></i>
-          </div>
-          <h3 class="font-display font-bold text-lg text-white mb-2">Detetives & Perícias Manuais</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Cobram entre <strong class="text-slate-200">R$ 2.500 e R$ 5.000 por caso</strong> individual e demoram de 15 a 30 dias para emitir um relatório. Totalmente inviável para carteiras de execução em escala.
+        <!-- Título Comercial de Alto Ticket -->
+        <div class="max-w-4xl mb-6">
+          <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15] mb-4">
+            Apresente Dossiês Patrimoniais Que <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-200">Impressionam Clientes</span> e Destravam Honorários
+          </h1>
+          <p class="font-display text-base sm:text-xl text-zinc-300 leading-relaxed font-light max-w-3xl">
+            A ferramenta comercial definitiva para bancas de advocacia e mesas de crédito. Venda laudos periciais de <strong class="text-white font-semibold">R$ 2.500 a R$ 5.000</strong> e comprove a ocultação de bens para garantir penhoras imediatas de dívidas dadas como perdidas.
           </p>
-          <div class="text-[11px] font-mono text-red-400 bg-red-500/5 p-2.5 rounded-lg border border-red-500/10">
-            <strong>Gargalo:</strong> Lento, artesanal e custa mais que o próprio honorário inicial.
-          </div>
         </div>
 
-        <!-- Solução: RecuperIA Enterprise -->
-        <div class="glass-card-gold p-6 rounded-2xl shadow-xl shadow-amber-500/10 relative overflow-hidden">
-          <div class="absolute -right-6 -top-6 w-24 h-24 bg-amber-500/20 rounded-full blur-2xl"></div>
-          <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 text-amber-300 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-lightning"></i>
-          </div>
-          <h3 class="font-display font-bold text-lg text-white mb-2">RecuperIA Enterprise (SaaS)</h3>
-          <p class="text-slate-300 text-xs leading-relaxed mb-4">
-            Combina a profundidade de uma perícia investigativa forense de alto valor com a velocidade instantânea de <strong class="text-amber-400 font-bold">2 segundos</strong>, gerando Dossiê Timbrado A4 e Petição de Penhora (.docx).
-          </p>
-          <div class="text-[11px] font-mono text-emerald-400 bg-emerald-500/10 p-2.5 rounded-lg border border-emerald-500/20">
-            <strong>Vantagem:</strong> Assinatura mensal acessível, consultas ilimitadas e ROI imediato.
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SEÇÃO: SIMULADOR INTERATIVO FORENSE (LIVE SCANNER) -->
-  <!-- ========================================================================= -->
-  <section id="simulador" class="py-24 relative scroll-mt-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="font-mono text-xs uppercase tracking-widest text-cyan-400 font-bold bg-cyan-400/10 px-3 py-1 rounded-full border border-cyan-400/20">
-          Experiência Interativa em Tempo Real
-        </span>
-        <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-4 mb-4">
-          Simulador de Investigação & Desblindagem Forense
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base">
-          Escolha um caso real simulado abaixo ou clique em <strong class="text-amber-400">Executar Varredura Forense</strong> para ver o motor DuckDB cruzar dados cadastrais, familiares e patrimoniais na hora.
-        </p>
-      </div>
-
-      <!-- Simulador Container -->
-      <div class="glass-card rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl relative">
-        
-        <!-- Target Selection Tabs -->
-        <div class="mb-6">
-          <label class="block font-mono text-xs uppercase text-slate-400 font-bold mb-3">
-            Selecione o Caso de Execução para Simular:
-          </label>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <button onclick="setSimTarget(1)" id="targetBtn1" class="text-left p-3.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-white font-medium text-xs transition-all hover:bg-amber-500/20 flex flex-col gap-1">
-              <span class="font-bold text-amber-400 flex items-center justify-between">
-                <span>Caso 1: Marcos Vinícius</span>
-                <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-500/20 border border-amber-500/30">Dívida: R$ 480k</span>
-              </span>
-              <span class="text-slate-400 text-[11px]">Sisbajud Negativo · Blindagem por Holding Familiar</span>
+        <!-- Seletor de Casos Reais para Demonstração Comercial -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md max-w-3xl">
+          <span class="text-[11px] font-mono uppercase text-brand-300 font-bold block mb-2">
+            Selecione uma Demonstração Comercial para Visualizar:
+          </span>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <button onclick="setCommercialCase(1)" id="case-btn-1" class="p-3 rounded-xl bg-brand-600 text-white text-left text-xs font-bold transition flex flex-col justify-between shadow-sm">
+              <span>Caso 1: Execução Cível</span>
+              <span class="text-[10px] text-amber-200 font-normal">Dívida R$ 480k · Bens R$ 2.45M</span>
             </button>
-
-            <button onclick="setSimTarget(2)" id="targetBtn2" class="text-left p-3.5 rounded-xl border border-white/10 bg-slate-900/60 text-slate-300 font-medium text-xs transition-all hover:bg-slate-800/80 flex flex-col gap-1">
-              <span class="font-bold text-cyan-400 flex items-center justify-between">
-                <span>Caso 2: AgroLogística Ltda</span>
-                <span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 border border-cyan-500/30">Dívida: R$ 1.2M</span>
-              </span>
-              <span class="text-slate-400 text-[11px]">Sócia Laranja de 81 anos · Frota de Carretas Oculta</span>
+            <button onclick="setCommercialCase(2)" id="case-btn-2" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 text-left text-xs font-bold transition flex flex-col justify-between border border-white/10">
+              <span>Caso 2: AgroLogística Ltda</span>
+              <span class="text-[10px] text-zinc-400 font-normal">Dívida R$ 1.2M · 14 Carretas</span>
             </button>
-
-            <button onclick="setSimTarget(3)" id="targetBtn3" class="text-left p-3.5 rounded-xl border border-white/10 bg-slate-900/60 text-slate-300 font-medium text-xs transition-all hover:bg-slate-800/80 flex flex-col gap-1">
-              <span class="font-bold text-emerald-400 flex items-center justify-between">
-                <span>Caso 3: Dr. Roberto Sampaio</span>
-                <span class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/30">Dívida: R$ 750k</span>
-              </span>
-              <span class="text-slate-400 text-[11px]">Doação Premonitória a Cônjuge (Art. 158 CC)</span>
+            <button onclick="setCommercialCase(3)" id="case-btn-3" class="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 text-left text-xs font-bold transition flex flex-col justify-between border border-white/10">
+              <span>Caso 3: Due Diligence Pré-Crédito</span>
+              <span class="text-[10px] text-zinc-400 font-normal">Blindagem em Cônjuge</span>
             </button>
           </div>
         </div>
 
-        <!-- Search Bar Simulation Form -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-3 mb-6 p-4 rounded-2xl bg-slate-950/80 border border-white/10">
-          <div class="md:col-span-5">
-            <span class="block font-mono text-[10px] uppercase text-slate-400 mb-1">Nome do Alvo / Razão Social:</span>
-            <input type="text" id="simName" value="Marcos Vinícius Silveira" readonly class="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono font-bold focus:outline-none focus:border-amber-400">
-          </div>
-          <div class="md:col-span-3">
-            <span class="block font-mono text-[10px] uppercase text-slate-400 mb-1">Documento (CPF/CNPJ):</span>
-            <input type="text" id="simDoc" value="382.491.708-54" readonly class="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white font-mono focus:outline-none">
-          </div>
-          <div class="md:col-span-2">
-            <span class="block font-mono text-[10px] uppercase text-slate-400 mb-1">Data Inadimplência:</span>
-            <input type="text" id="simDate" value="15/03/2023" readonly class="w-full bg-slate-900 border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-amber-300 font-mono focus:outline-none">
-          </div>
-          <div class="md:col-span-2 flex items-end">
-            <button onclick="runForensicScan()" id="btnRunScan" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-black font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-1.5 h-[42px]">
-              <i class="ph ph-play text-base font-bold"></i>
-              <span>Escanear</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Scanning Terminal Console (Animated) -->
-        <div id="scanConsole" class="mb-6 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 border border-white/10 min-h-[140px] flex flex-col justify-center">
-          <div class="flex items-center gap-2 text-slate-400 mb-2 border-b border-white/5 pb-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span class="text-[11px] uppercase">Logs do Motor Forense em DuckDB:</span>
-          </div>
-          <div id="scanLogText" class="space-y-1.5 text-slate-400">
-            <p>● Pressione <strong class="text-amber-400 font-bold">"Escanear"</strong> para acionar a varredura nos 55 milhões de CNPJs e bases públicas integradas.</p>
-          </div>
-        </div>
-
-        <!-- Simulated Forensic Results (Reveals on scan) -->
-        <div id="scanResults" class="hidden transition-all duration-500">
-          
-          <!-- Banner de Resumo da Desblindagem -->
-          <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-950/60 via-slate-900 to-amber-950/60 border border-emerald-500/30 mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center text-3xl font-bold flex-shrink-0">
-                <i class="ph ph-check-circle"></i>
-              </div>
-              <div>
-                <div class="flex items-center gap-2">
-                  <span class="font-mono text-[11px] font-bold text-emerald-400 uppercase bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">VARREDURA CONCLUÍDA EM 1.84s</span>
-                  <span class="font-mono text-[11px] text-amber-300 font-bold" id="resScoreText">Score Laranja: 91/100 (Crítico)</span>
-                </div>
-                <h4 class="font-display font-bold text-xl text-white mt-1" id="resSummaryTitle">
-                  Patrimônio Localizado Encontrado: R$ 2.450.000,00
-                </h4>
-                <p class="text-xs text-slate-300" id="resSummaryDesc">
-                  Mapeadas 3 empresas ativas no QSA, 2 imóveis em cartório e 1 comunhão de bens omitida do processo.
-                </p>
-              </div>
-            </div>
-
-            <!-- Action Buttons for Dossiê -->
-            <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-              <button onclick="downloadMockDossier()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg shadow-amber-500/20">
-                <i class="ph ph-file-pdf text-base"></i>
-                <span>Baixar Dossiê A4 (.PDF)</span>
-              </button>
-              <button onclick="copyMockPetition()" id="btnCopyPet" class="px-4 py-2.5 rounded-xl glass-card hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 border border-white/10">
-                <i class="ph ph-copy text-base"></i>
-                <span>Copiar Petição (.DOCX)</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Cards Grid de Ativos Descobertos -->
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
-            
-            <!-- Card 1: Imóveis em Cartório -->
-            <div class="glass-card p-4 rounded-xl border-white/10">
-              <div class="flex items-center justify-between text-slate-400 mb-2 border-b border-white/5 pb-2">
-                <span class="flex items-center gap-1.5 font-bold text-white"><i class="ph ph-house-line text-emerald-400 text-base"></i> CARTÓRIOS / SAEC</span>
-                <span class="text-emerald-400 font-bold">2 REGISTROS</span>
-              </div>
-              <div class="space-y-2 text-slate-300 text-[11px]" id="resImoveisBox">
-                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-                  <div class="font-bold text-white">Matrícula 48.912 · 2º RGI</div>
-                  <div class="text-slate-400 text-[10px]">Apto Cobertura Jardins · R$ 1.800.000</div>
-                  <div class="text-amber-400 text-[10px] mt-1">⚠️ Alienado à Holding 22 dias após protesto</div>
-                </div>
-                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-                  <div class="font-bold text-white">Matrícula 12.043 · 1º RGI</div>
-                  <div class="text-slate-400 text-[10px]">Galpão Logístico · R$ 650.000</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2: Veículos & Embarcações -->
-            <div class="glass-card p-4 rounded-xl border-white/10">
-              <div class="flex items-center justify-between text-slate-400 mb-2 border-b border-white/5 pb-2">
-                <span class="flex items-center gap-1.5 font-bold text-white"><i class="ph ph-car text-cyan-400 text-base"></i> RENAVAM & MARINHA</span>
-                <span class="text-cyan-400 font-bold">2 BENS DETECTADOS</span>
-              </div>
-              <div class="space-y-2 text-slate-300 text-[11px]" id="resVeiculosBox">
-                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-                  <div class="font-bold text-white">BMW X6 M-Sport 2024</div>
-                  <div class="text-slate-400 text-[10px]">FIPE: R$ 620.000 · Placa Q**-9912</div>
-                  <div class="text-cyan-400 text-[10px] mt-1">✓ Titular: Cônjuge (Comunhão de Bens)</div>
-                </div>
-                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-                  <div class="font-bold text-white">Lancha Fibrafort 310 (Marinha)</div>
-                  <div class="text-slate-400 text-[10px]">Valor Est.: R$ 380.000</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 3: Empresas & Redes Societárias -->
-            <div class="glass-card p-4 rounded-xl border-white/10">
-              <div class="flex items-center justify-between text-slate-400 mb-2 border-b border-white/5 pb-2">
-                <span class="flex items-center gap-1.5 font-bold text-white"><i class="ph ph-buildings text-amber-400 text-base"></i> 55M CNPJs (DUCKDB)</span>
-                <span class="text-amber-400 font-bold">GRUPO DE FATO</span>
-              </div>
-              <div class="space-y-2 text-slate-300 text-[11px]" id="resSociosBox">
-                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-                  <div class="font-bold text-white">M.V.S. Holding Participações</div>
-                  <div class="text-slate-400 text-[10px]">CNPJ 48.***.***/0001-90 · Capital: R$ 1.8M</div>
-                  <div class="text-amber-400 text-[10px] mt-1">⚠️ Sócio Administrador com 95% das cotas</div>
-                </div>
-                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-                  <div class="font-bold text-white">Logística Prime Eireli</div>
-                  <div class="text-slate-400 text-[10px]">CNPJ 32.***.***/0001-12 · Faturamento Ativo</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SEÇÃO: OS 6 MOTORES TECNOLÓGICOS (DEEP TECH FORENSE) -->
-  <!-- ========================================================================= -->
-  <section id="motores" class="py-24 bg-slate-950/70 border-y border-white/5 relative scroll-mt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-          Arquitetura & Engenharia Proprietária
-        </span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white mt-4 mb-4">
-          O Fosso Tecnológico dos 6 Motores Nativos
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base">
-          Construído para rodar localmente com custo marginal zero de consulta, entregando provas documentais irrefutáveis aos magistrados e analistas de crédito.
-        </p>
-      </div>
-
-      <!-- 6 Engines Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Motor 1 -->
-        <div class="glass-card-gold p-6 rounded-2xl relative group hover:-translate-y-1 transition-transform">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-database"></i>
-          </div>
-          <span class="font-mono text-[10px] uppercase font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">Motor 01</span>
-          <h3 class="font-display font-bold text-xl text-white mt-2 mb-2">Base DuckDB (55M CNPJs)</h3>
-          <p class="text-slate-300 text-xs leading-relaxed">
-            Indexação vetorial de todos os estabelecimentos, sócios e capitais sociais do Brasil. Expansão de grupos econômicos e filiais em <strong class="text-amber-400">menos de 80ms a custo R$ 0,00</strong>.
-          </p>
-        </div>
-
-        <!-- Motor 2 -->
-        <div class="glass-card p-6 rounded-2xl relative group hover:-translate-y-1 transition-transform border-white/10">
-          <div class="w-12 h-12 rounded-xl bg-red-500/20 border border-red-500/40 text-red-400 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-shield-warning"></i>
-          </div>
-          <span class="font-mono text-[10px] uppercase font-bold text-red-400 bg-red-400/10 px-2 py-0.5 rounded border border-red-400/20">Motor 02</span>
-          <h3 class="font-display font-bold text-xl text-white mt-2 mb-2">Score "Nota de Laranja"</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Algoritmo heurístico que detecta disparidades de idade do titular, capital social incompatível, endereços compartilhados com empresas inaptas e testas de ferro evidentes (Score 0 a 100).
-          </p>
-        </div>
-
-        <!-- Motor 3 -->
-        <div class="glass-card-cyan p-6 rounded-2xl relative group hover:-translate-y-1 transition-transform">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-clock-counter-clockwise"></i>
-          </div>
-          <span class="font-mono text-[10px] uppercase font-bold text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded border border-cyan-400/20">Motor 03</span>
-          <h3 class="font-display font-bold text-xl text-white mt-2 mb-2">Radar Temporal da Fraude</h3>
-          <p class="text-slate-300 text-xs leading-relaxed">
-            Cruza a data exata do título executivo com as doações, saídas societárias e compras de imóveis, gerando prova incontestável de <strong class="text-cyan-400">Fraude contra Credores (Art. 158 CC)</strong>.
-          </p>
-        </div>
-
-        <!-- Motor 4 -->
-        <div class="glass-card p-6 rounded-2xl relative group hover:-translate-y-1 transition-transform border-white/10">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-300 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-scan"></i>
-          </div>
-          <span class="font-mono text-[10px] uppercase font-bold text-indigo-400 bg-indigo-400/10 px-2 py-0.5 rounded border border-indigo-400/20">Motor 04</span>
-          <h3 class="font-display font-bold text-xl text-white mt-2 mb-2">Document AI de Matrículas (SAEC)</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Mecanismo de visão computacional que analisa PDFs de certidões de cartórios de registro imobiliário, localizando averbações premonitórias, doações com usufruto e cláusulas de inalienabilidade.
-          </p>
-        </div>
-
-        <!-- Motor 5 -->
-        <div class="glass-card p-6 rounded-2xl relative group hover:-translate-y-1 transition-transform border-white/10">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-calculator"></i>
-          </div>
-          <span class="font-mono text-[10px] uppercase font-bold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20">Motor 05</span>
-          <h3 class="font-display font-bold text-xl text-white mt-2 mb-2">Calculadora Pericial Art. 798 CPC</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
-            Liquidação matemática instantânea da dívida com aplicação de tabelas judiciais oficiais (IPCA-E, TJSP, TJRJ, TRF), juros de mora legais (1% a.m.) e honorários sucumbenciais certificados.
-          </p>
-        </div>
-
-        <!-- Motor 6 -->
-        <div class="glass-card-gold p-6 rounded-2xl relative group hover:-translate-y-1 transition-transform">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center text-2xl font-bold mb-4">
-            <i class="ph ph-file-doc"></i>
-          </div>
-          <span class="font-mono text-[10px] uppercase font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">Motor 06</span>
-          <h3 class="font-display font-bold text-xl text-white mt-2 mb-2">Dossiê Timbrado A4 & Peças DOCX</h3>
-          <p class="text-slate-300 text-xs leading-relaxed">
-            Compilação pericial em <strong class="text-amber-400">relatório A4 pronto com a logomarca do seu escritório</strong>, acompanhado de petição jurídica formatada em Word com jurisprudência do STJ pronta para protocolar.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SEÇÃO: MERCADO DUAL (LAWTECH + RISKTECH) -->
-  <!-- ========================================================================= -->
-  <section class="py-20 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400 font-bold bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/20">
-          Aplicação Prática Estratégica
-        </span>
-        <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-4 mb-4">
-          A Mesma Tecnologia Atendendo Duas Frentes Bilionárias
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base">
-          Enquanto o advogado usa a ferramenta para penhorar bens e faturar honorários de êxito, as factorings e empresas de fomento usam a mesma ferramenta para não tomar o calote.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Lado 1: Lawtech -->
-        <div class="glass-card p-8 rounded-3xl border-cyan-500/20 relative">
-          <div class="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 font-bold bg-cyan-400/10 px-3 py-1 rounded-full border border-cyan-400/20 mb-4">
-            <i class="ph ph-gavel"></i> FRENTE 01 · LAWTECH (PÓS-CALOTE)
-          </div>
-          <h3 class="font-display font-bold text-2xl text-white mb-3">Escritórios de Advocacia Contenciosa</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-6">
-            Desengavete execuções civis e fiscais paralisadas há anos. Apresente ao juiz o laudo pericial com os bens de sócios ocultos e garanta o pagamento de <strong class="text-cyan-400">10% a 30% em honorários de sucumbência e êxito</strong>.
-          </p>
-          <ul class="space-y-3 font-mono text-xs text-slate-300">
-            <li class="flex items-center gap-2">
-              <i class="ph ph-check text-cyan-400 font-bold"></i>
-              <span>Mais de 1,4 milhão de advogados e 40 mil bancas na OAB</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="ph ph-check text-cyan-400 font-bold"></i>
-              <span>Petição com pedido de penhora de cotas e desconsideração inversa</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="ph ph-check text-cyan-400 font-bold"></i>
-              <span>Um único processo recuperado paga anos da assinatura</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Lado 2: Risktech -->
-        <div class="glass-card-gold p-8 rounded-3xl relative">
-          <div class="inline-flex items-center gap-2 font-mono text-xs text-amber-300 font-bold bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20 mb-4">
-            <i class="ph ph-chart-line-up"></i> FRENTE 02 · RISKTECH (PRÉ-CRÉDITO)
-          </div>
-          <h3 class="font-display font-bold text-2xl text-white mb-3">Factorings, FIDCs & Securitizadoras</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-6">
-            Realize Due Diligence cadastral e checagem de blindagem antes de antecipar duplicatas ou assinar contratos de locação e fornecimento. Identifique fraudadores antes da concessão.
-          </p>
-          <ul class="space-y-3 font-mono text-xs text-slate-300">
-            <li class="flex items-center gap-2">
-              <i class="ph ph-check text-amber-400 font-bold"></i>
-              <span>Mais de 3.500 factorings movimentando R$ 500 bilhões/ano</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="ph ph-check text-amber-400 font-bold"></i>
-              <span>Detecção de empresas de prateleira e procuradores ocultos</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <i class="ph ph-check text-amber-400 font-bold"></i>
-              <span>Um calote evitado de R$ 100k salva o resultado do trimestre</span>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SEÇÃO: CALCULADORA INTERATIVA DE ROI FORENSE -->
-  <!-- ========================================================================= -->
-  <section id="calculadora" class="py-24 bg-slate-950/80 border-y border-white/5 relative scroll-mt-20">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400 font-bold bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/20">
-          Projeção Financeira Realista
-        </span>
-        <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-4 mb-4">
-          Calculadora de Honorários & Retorno de Investimento
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base">
-          Mova os controles abaixo para calcular o volume de honorários travados no seu escritório que o RecuperIA pode ajudar a recuperar nos próximos 60 dias.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <!-- Controls Column -->
-        <div class="lg:col-span-6 space-y-6">
-          
-          <!-- Slider 1: Execuções Travadas -->
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="font-mono text-xs text-slate-300 uppercase font-bold">Processos de Execução em Aberto:</label>
-              <span id="labelProcessos" class="font-mono text-base font-bold text-amber-400 bg-amber-400/10 px-2.5 py-0.5 rounded border border-amber-400/20">30 processos</span>
-            </div>
-            <input type="range" id="rangeProcessos" min="5" max="150" value="30" step="5" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer">
-            <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1">
-              <span>5 casos</span>
-              <span>75 casos</span>
-              <span>150 casos</span>
-            </div>
-          </div>
-
-          <!-- Slider 2: Ticket Médio da Dívida -->
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="font-mono text-xs text-slate-300 uppercase font-bold">Ticket Médio por Execução:</label>
-              <span id="labelTicket" class="font-mono text-base font-bold text-cyan-400 bg-cyan-400/10 px-2.5 py-0.5 rounded border border-cyan-400/20">R$ 150.000</span>
-            </div>
-            <input type="range" id="rangeTicket" min="20000" max="1000000" value="150000" step="10000" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer">
-            <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1">
-              <span>R$ 20.000</span>
-              <span>R$ 500.000</span>
-              <span>R$ 1.000.000</span>
-            </div>
-          </div>
-
-          <!-- Slider 3: % Honorários de Êxito -->
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="font-mono text-xs text-slate-300 uppercase font-bold">% de Honorários de Êxito Contratados:</label>
-              <span id="labelHonorarios" class="font-mono text-base font-bold text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded border border-emerald-400/20">20%</span>
-            </div>
-            <input type="range" id="rangeHonorarios" min="10" max="30" value="20" step="1" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer">
-            <div class="flex justify-between text-[10px] font-mono text-slate-400 mt-1">
-              <span>10% (Padrão)</span>
-              <span>20% (Êxito Médio)</span>
-              <span>30% (Complexo)</span>
-            </div>
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 font-mono text-[11px] text-slate-400">
-            <span class="text-amber-400 font-bold">● Taxa de Efetividade Conservadora:</span> Consideramos uma taxa de localização de bens de apenas <strong>35%</strong> dos casos escanneados.
-          </div>
-
-        </div>
-
-        <!-- Result Display Card -->
-        <div class="lg:col-span-6 bg-slate-950 p-6 sm:p-8 rounded-2xl border border-amber-500/30 flex flex-col justify-between gap-6 relative overflow-hidden shadow-2xl">
-          <div class="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-          <div>
-            <span class="font-mono text-[10px] uppercase font-bold text-amber-400 bg-amber-400/10 px-2.5 py-1 rounded border border-amber-400/20">
-              POTENCIAL DE RECEITA DESTRAVADA
-            </span>
-            <div class="mt-4">
-              <div class="text-xs text-slate-400 font-mono">Honorários de Êxito Estimados:</div>
-              <div id="resHonorariosTotal" class="font-mono font-black text-3xl sm:text-4xl text-amber-400 tracking-tight mt-1">
-                R$ 315.000,00
-              </div>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-4 border-y border-white/10 py-4 font-mono text-xs">
-            <div>
-              <span class="text-slate-400 block text-[10px]">PATRIMÔNIO ENCONTRADO:</span>
-              <span id="resPatrimonioTotal" class="text-white font-bold text-sm">R$ 1.575.000</span>
-            </div>
-            <div>
-              <span class="text-slate-400 block text-[10px]">HORAS ECONOMIZADAS:</span>
-              <span id="resHorasTotal" class="text-cyan-400 font-bold text-sm">180h / mês</span>
-            </div>
-            <div>
-              <span class="text-slate-400 block text-[10px]">INVESTIMENTO NO SAAS:</span>
-              <span class="text-slate-300 font-bold text-sm">R$ 890 / mês</span>
-            </div>
-            <div>
-              <span class="text-slate-400 block text-[10px]">RETORNO ESTIMADO (ROI):</span>
-              <span id="resRoiTotal" class="text-emerald-400 font-bold text-sm">> 350x</span>
-            </div>
-          </div>
-
-          <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Fiz%20a%20simula%C3%A7%C3%A3o%20na%20calculadora%20do%20RecuperIA%20e%20gostaria%20de%20implantar%20a%20ferramenta%20na%20minha%20carteira." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-extrabold text-xs uppercase tracking-wider text-center shadow-lg shadow-amber-500/25 transition-all">
-            <i class="ph ph-whatsapp-logo mr-1 text-base"></i> Destravar Essa Receita com Rubens Loss
-          </a>
-
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
-  <!-- SEÇÃO: PLANOS & INVESTIMENTO TRANSPARENTE -->
-  <!-- ========================================================================= -->
-  <section id="planos" class="py-24 relative scroll-mt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-          Modelos de Assinatura Recorrente (SaaS)
-        </span>
-        <h2 class="font-display font-black text-3xl sm:text-5xl text-white mt-4 mb-4">
-          Planos Feitos para Escalar a Sua Banca
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base">
-          Sem contratos leoninos ou travas burocráticas. Todas as assinaturas incluem acesso ilimitado à base de 55M de CNPJs no DuckDB com suporte direto do time de engenharia.
-        </p>
-      </div>
-
+    <!-- ======================================================================= -->
+    <!-- CORPO PRINCIPAL COMERCIAL: 2 COLUNAS (8 COLUNAS CONTEÚDO + 4 STICKY CARD) -->
+    <!-- ======================================================================= -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        <!-- Left: 3 Pricing Cards (col-span-8) -->
-        <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- ===================================================================== -->
+        <!-- COLUNA ESQUERDA: APRESENTAÇÃO COMERCIAL DETALHADA (8 COLUNAS) -->
+        <!-- ===================================================================== -->
+        <div class="lg:col-span-8 space-y-12">
           
-          <!-- Plano 1: Solo -->
-          <div class="glass-card p-6 rounded-3xl border-white/10 flex flex-col justify-between hover:border-white/20 transition-all">
-            <div>
-              <span class="font-mono text-[10px] uppercase font-bold text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded border border-cyan-400/20">Plano Solo</span>
-              <h3 class="font-display font-bold text-xl text-white mt-2">Advogados & Peritos</h3>
-              <p class="text-slate-400 text-xs mt-1 mb-4">Ideal para atuação individual e casos contenciosos pontuais.</p>
+          <!-- SEÇÃO 1: O LAUDO PERICIAL TIMBRADO (A APRESENTAÇÃO QUE O CLIENTE RECEBE) -->
+          <section id="apresentacao-laudo" class="space-y-6">
+            <div class="border-b border-surface-200 pb-4">
+              <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Padrão Visual Executivo</span>
+              <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-surface-900 mt-1">
+                A Anatomia do Dossiê Pericial Timbrado A4
+              </h2>
+              <p class="text-xs sm:text-sm text-surface-800 mt-1">
+                Um documento em alta definição com a logomarca da sua banca que você entrega para o cliente em reuniões decisivas ou protocola diretamente na petição judicial.
+              </p>
+            </div>
+
+            <!-- Card de Destaque do Dossiê -->
+            <div class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
               
-              <div class="mb-6 font-mono">
-                <span class="text-3xl font-extrabold text-white">R$ 390</span>
-                <span class="text-slate-400 text-xs">/mês</span>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-surface-100 gap-3">
+                <div class="flex items-center space-x-3">
+                  <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-800 flex items-center justify-center text-2xl font-bold">
+                    <i class="ph-bold ph-certificate"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-display text-lg font-bold text-surface-900" id="case-target-name">
+                      Dossiê: Marcos Vinícius Silveira
+                    </h3>
+                    <p class="text-xs text-surface-600 font-mono" id="case-target-doc">
+                      CPF: 382.491.708-54 · Processo 1048291-88.2023.8.26.0100
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-red-100 text-red-800 border border-red-200 font-mono" id="case-risk-badge">
+                    Score Laranja: 91/100 (Crítico)
+                  </span>
+                </div>
               </div>
 
-              <ul class="space-y-3 font-mono text-xs text-slate-300 border-t border-white/10 pt-4 mb-6">
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-cyan-400 font-bold"></i>
-                  <span>1 Usuário / Acesso</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-cyan-400 font-bold"></i>
-                  <span>Buscas ilimitadas em 55M CNPJs</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-cyan-400 font-bold"></i>
-                  <span>20 Dossiês A4 completos/mês</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-cyan-400 font-bold"></i>
-                  <span>Petições judiciais ilimitadas</span>
-                </li>
-              </ul>
+              <!-- 4 Pilares Comerciais do Dossiê Entregue -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                
+                <div class="p-4 rounded-2xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
+                  <div class="flex items-center space-x-2 text-brand-800 font-bold">
+                    <i class="ph-bold ph-buildings text-base text-brand-600"></i>
+                    <span>1. Empresas & Holdings Familiares</span>
+                  </div>
+                  <p class="text-surface-700 leading-relaxed" id="case-desc-empresas">
+                    Mapeamento relacional da holding M.V.S. Participações (Capital R$ 1.8M) criada 22 dias após a citação judicial, com 95% das cotas em nome do titular.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
+                  <div class="flex items-center space-x-2 text-emerald-800 font-bold">
+                    <i class="ph-bold ph-house-line text-base text-emerald-600"></i>
+                    <span>2. Imóveis Identificados em Cartório</span>
+                  </div>
+                  <p class="text-surface-700 leading-relaxed" id="case-desc-imoveis">
+                    Cobertura de 320m² (Matrícula 48.912 - 2º RGI) avaliada em R$ 1.800.000 + Galpão logístico de R$ 650.000 com cláusula simulada de usufruto.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
+                  <div class="flex items-center space-x-2 text-sky-800 font-bold">
+                    <i class="ph-bold ph-car text-base text-sky-600"></i>
+                    <span>3. Veículos & Embarcações de Luxo</span>
+                  </div>
+                  <p class="text-surface-700 leading-relaxed" id="case-desc-veiculos">
+                    BMW X6 2024 (R$ 620.000) registrada no nome do cônjuge sob regime de comunhão parcial + Lancha Fibrafort 310 na Capitania dos Portos.
+                  </p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
+                  <div class="flex items-center space-x-2 text-amber-800 font-bold">
+                    <i class="ph-bold ph-gavel text-base text-amber-600"></i>
+                    <span>4. Minuta de Penhora com Prova Temporal</span>
+                  </div>
+                  <p class="text-surface-700 leading-relaxed">
+                    Petição pronta em Word (.docx) demonstrando fraude contra credores (Art. 158 CC) e requerendo desconsideração inversa e penhora imediata de cotas.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Botão de Ação Rápida de Demonstração -->
+              <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-surface-100">
+                <span class="text-xs text-surface-600 font-mono">
+                  Patrimônio Localizado no Laudo: <strong class="text-surface-900" id="case-total-amount">R$ 2.450.000,00</strong>
+                </span>
+                <button onclick="openDossierModal()" class="w-full sm:w-auto px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+                  <i class="ph-bold ph-eye"></i>
+                  <span>Visualizar Páginas do Dossiê Demonstrativo</span>
+                </button>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- SEÇÃO 2: COMO A SUA BANCA MONETIZA E COBRA PELO SERVIÇO -->
+          <section class="space-y-6">
+            <div class="border-b border-surface-200 pb-4">
+              <span class="text-xs font-bold tracking-widest text-emerald-700 uppercase">Modelo de Negócio para o Escritório</span>
+              <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-surface-900 mt-1">
+                2 Formas Imediatas de Faturar Alto com o RecuperIA
+              </h2>
+              <p class="text-xs sm:text-sm text-surface-800 mt-1">
+                A tecnologia se paga na primeira semana. Veja como nossos clientes estruturam suas propostas comerciais:
+              </p>
             </div>
 
-            <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20contratar%20o%20Plano%20Solo%20(R$%20390)%20do%20RecuperIA." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider text-center border border-white/10 transition-colors">
-              Assinar Plano Solo
-            </a>
-          </div>
-
-          <!-- Plano 2: Escritório Pro (Destaque) -->
-          <div class="glass-card-gold p-6 rounded-3xl relative flex flex-col justify-between shadow-2xl shadow-amber-500/10 border-2 border-amber-400/60">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-extrabold font-mono text-[10px] uppercase px-3 py-0.5 rounded-full shadow-md">
-              Mais Escolhido pelas Bancas
-            </div>
-            
-            <div>
-              <span class="font-mono text-[10px] uppercase font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded border border-amber-400/20">Escritório Pro</span>
-              <h3 class="font-display font-bold text-xl text-white mt-2">Bancas Médias & Equipes</h3>
-              <p class="text-slate-300 text-xs mt-1 mb-4">Para escritórios que precisam de escala e personalização visual.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               
-              <div class="mb-6 font-mono">
-                <span class="text-3xl font-extrabold text-amber-400">R$ 890</span>
-                <span class="text-slate-400 text-xs">/mês</span>
+              <!-- Modelo 1: Venda do Dossiê Avulso -->
+              <div class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-7 shadow-sm space-y-4 hover-lift">
+                <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-800 flex items-center justify-center text-xl font-bold">
+                  <i class="ph-bold ph-currency-dollar"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono uppercase text-brand-700 font-bold">Frente 01 · Receita Fixa Imediata</span>
+                  <h3 class="font-display text-xl font-bold text-surface-900 mt-1">Venda de Laudo Pericial de Investigação</h3>
+                </div>
+                <p class="text-xs text-surface-700 leading-relaxed">
+                  Cobre de <strong class="text-surface-900">R$ 2.500 a R$ 5.000</strong> do seu cliente para emitir o laudo de varredura patrimonial profunda antes de entrar com a ação judicial.
+                </p>
+                <div class="p-3 bg-brand-50 rounded-xl border border-brand-200 text-xs font-mono text-brand-900">
+                  <strong>Margem Líquida:</strong> Como o RecuperIA gera o laudo em 2 segundos a custo marginal zero, seu lucro na perícia é de <strong>95%</strong>.
+                </div>
               </div>
 
-              <ul class="space-y-3 font-mono text-xs text-slate-200 border-t border-amber-500/20 pt-4 mb-6">
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-amber-400 font-bold"></i>
-                  <span>Até 3 Usuários simultâneos</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-amber-400 font-bold"></i>
-                  <span>60 Dossiês A4 completos/mês</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-amber-400 font-bold"></i>
-                  <span class="font-bold text-amber-300">Timbre e Logomarca da sua banca</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-amber-400 font-bold"></i>
-                  <span>Auditor de Matrículas IA (SAEC)</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-amber-400 font-bold"></i>
-                  <span>Radar de Fraude Temporal</span>
-                </li>
-              </ul>
+              <!-- Modelo 2: Honorários de Êxito -->
+              <div class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-7 shadow-sm space-y-4 hover-lift">
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl font-bold">
+                  <i class="ph-bold ph-chart-line-up"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono uppercase text-emerald-700 font-bold">Frente 02 · Honorários de Êxito</span>
+                  <h3 class="font-display text-xl font-bold text-surface-900 mt-1">Honorários de Êxito de 10% a 30%</h3>
+                </div>
+                <p class="text-xs text-surface-700 leading-relaxed">
+                  Desengavete execuções com Sisbajud negativo e receba honorários milionários sobre os imóveis e cotas societárias que você encontrou para a penhora.
+                </p>
+                <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs font-mono text-emerald-900">
+                  <strong>Retorno Prático:</strong> Um único processo de R$ 300 mil recuperado gera <strong>R$ 60.000 em honorários</strong> para o seu escritório.
+                </div>
+              </div>
+
             </div>
+          </section>
 
-            <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20contratar%20o%20Plano%20Escrit%C3%B3rio%20Pro%20(R$%20890)%20do%20RecuperIA." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-extrabold text-xs uppercase tracking-wider text-center shadow-lg shadow-amber-500/20 transition-all">
-              Assinar Escritório Pro
-            </a>
-          </div>
-
-          <!-- Plano 3: Corporate -->
-          <div class="glass-card p-6 rounded-3xl border-white/10 flex flex-col justify-between hover:border-white/20 transition-all">
-            <div>
-              <span class="font-mono text-[10px] uppercase font-bold text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20">Corporate & FIDC</span>
-              <h3 class="font-display font-bold text-xl text-white mt-2">Fundos & Recuperadoras</h3>
-              <p class="text-slate-400 text-xs mt-1 mb-4">Volume massivo de execuções e análise de risco pré-crédito.</p>
-              
-              <div class="mb-6 font-mono">
-                <span class="text-3xl font-extrabold text-white">R$ 2.490</span>
-                <span class="text-slate-400 text-xs">/mês</span>
-              </div>
-
-              <ul class="space-y-3 font-mono text-xs text-slate-300 border-t border-white/10 pt-4 mb-6">
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-emerald-400 font-bold"></i>
-                  <span>Até 10 Usuários inclusos</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-emerald-400 font-bold"></i>
-                  <span>200 Dossiês A4 completos/mês</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-emerald-400 font-bold"></i>
-                  <span>Integração via Webhook / API</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <i class="ph ph-check text-emerald-400 font-bold"></i>
-                  <span>Suporte pericial prioritário</span>
-                </li>
-              </ul>
-            </div>
-
-            <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Tenho%20interesse%20no%20Plano%20Corporate%20(R$%202.490)%20do%20RecuperIA." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs uppercase tracking-wider text-center border border-white/10 transition-colors">
-              Falar com Engenharia
-            </a>
-          </div>
-
-        </div>
-
-        <!-- Right: Sticky Investment Card / Onboarding Support (col-span-4) -->
-        <div class="lg:col-span-4 sticky-pricing-card">
-          <div class="glass-card-gold p-6 rounded-3xl border border-amber-500/30 shadow-2xl space-y-6">
-            
-            <div class="flex items-center gap-3">
-              <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl font-bold">
-                <i class="ph ph-handshake"></i>
-              </div>
+          <!-- SEÇÃO 3: PERSONALIZAÇÃO INSTITUCIONAL COM A SUA MARCA -->
+          <section class="bg-surface-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 border border-surface-800">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-surface-800 pb-4 gap-3">
               <div>
-                <h4 class="font-display font-bold text-base text-white">Onboarding & Setup Assistido</h4>
-                <p class="text-xs text-slate-400">Implementação em menos de 24 horas</p>
+                <span class="text-xs font-bold tracking-widest text-brand-300 uppercase">White-Label & Identidade da Sua Banca</span>
+                <h3 class="font-display text-2xl font-bold mt-1">O Seu Logotipo e Timbre em Todas as Peças</h3>
+              </div>
+              <div class="w-10 h-10 rounded-full bg-brand-600 text-brand-100 flex items-center justify-center text-xl">
+                <i class="ph-fill ph-seal-check"></i>
               </div>
             </div>
 
-            <div class="space-y-3 font-mono text-xs text-slate-300">
-              <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 flex items-start gap-2.5">
-                <i class="ph ph-check-circle text-emerald-400 text-base mt-0.5"></i>
-                <div>
-                  <strong class="text-white">Taxa de Setup Sob Medida:</strong>
-                  <p class="text-[11px] text-slate-400">Parametrização do timbre do escritório, personalização de minutas e treinamento da equipe.</p>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              O cliente final e o juiz da causa não veem a marca do software. Todo o laudo é emitido com o cabeçalho oficial, OAB dos advogados e identidade visual da sua banca:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
+              <div class="bg-surface-800/80 border border-surface-700 rounded-xl p-4 space-y-2 hover-lift">
+                <div class="text-brand-300 font-bold flex items-center space-x-1.5">
+                  <i class="ph-bold ph-image"></i>
+                  <span>Timbre & Logo da Banca</span>
                 </div>
+                <p class="text-zinc-400 text-[11px]">Personalização automática na primeira folha e rodapés timbrados com OAB e endereço.</p>
               </div>
 
-              <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 flex items-start gap-2.5">
-                <i class="ph ph-check-circle text-emerald-400 text-base mt-0.5"></i>
-                <div>
-                  <strong class="text-white">Canal Direto com Rubens Loss:</strong>
-                  <p class="text-[11px] text-slate-400">Suporte técnico sênior e alinhamento de novos motores forenses sob demanda.</p>
+              <div class="bg-surface-800/80 border border-surface-700 rounded-xl p-4 space-y-2 hover-lift">
+                <div class="text-brand-300 font-bold flex items-center space-x-1.5">
+                  <i class="ph-bold ph-file-doc"></i>
+                  <span>Minuta em Word Editável</span>
                 </div>
+                <p class="text-zinc-400 text-[11px]">Exportação direta em arquivo .docx formatado segundo os padrões do CPC para revisão do advogado.</p>
               </div>
 
-              <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 flex items-start gap-2.5">
-                <i class="ph ph-check-circle text-emerald-400 text-base mt-0.5"></i>
-                <div>
-                  <strong class="text-white">Conformidade LGPD Total:</strong>
-                  <p class="text-[11px] text-slate-400">Bases de dados públicas e certidões estritamente alinhadas com as normas dos Tribunais.</p>
+              <div class="bg-surface-800/80 border border-surface-700 rounded-xl p-4 space-y-2 hover-lift">
+                <div class="text-brand-300 font-bold flex items-center space-x-1.5">
+                  <i class="ph-bold ph-shield-check"></i>
+                  <span>Assinatura Digital ICP</span>
                 </div>
+                <p class="text-zinc-400 text-[11px]">Compatível com assinadores padrão OAB e certificados A1/A3 para juntada imediata aos autos.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- SEÇÃO 4: DEPOIMENTOS E AVALIAÇÕES DE SÓCIOS E GESTORES -->
+          <section class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-surface-200 pb-4 gap-4">
+              <div>
+                <span class="text-xs font-bold tracking-widest text-brand-700 uppercase">Segurança Jurídica & Resultados Comprovados</span>
+                <h3 class="font-display text-2xl font-bold text-surface-900 mt-0.5">O Que Dizem Nossos Clientes</h3>
+              </div>
+              <div class="flex items-center space-x-2 bg-brand-50 px-3.5 py-1.5 rounded-full border border-brand-200">
+                <span class="text-amber-500 flex text-sm">★★★★★</span>
+                <strong class="text-xs font-bold text-brand-900">4.9 / 5.0</strong>
+                <span class="text-[11px] text-surface-700">(Bancas de Advocacia e Fundos)</span>
               </div>
             </div>
 
-            <div class="border-t border-amber-500/20 pt-4">
-              <div class="text-[11px] text-slate-400 font-mono mb-3 text-center">
-                Dúvidas sobre o plano ideal para a sua banca?
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div class="p-4 rounded-xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
+                <div class="flex items-center space-x-2">
+                  <span class="text-amber-500 text-xs">★★★★★</span>
+                  <strong class="text-surface-900 font-bold">"Destravamos R$ 850 mil em 15 dias"</strong>
+                </div>
+                <p class="text-surface-700 leading-relaxed">
+                  "Tínhamos uma execução parada há 3 anos com Sisbajud negativo. Em 2 segundos no RecuperIA localizamos 2 imóveis em nome da esposa no regime de comunhão. O juiz deferiu a penhora na semana seguinte."
+                </p>
+                <span class="text-[11px] text-brand-700 font-semibold block">— Dr. Henrique Castilho (Sócio de Contencioso Cível · SP)</span>
               </div>
-              <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20os%20planos%20do%20RecuperIA." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 transition-all">
-                <i class="ph ph-whatsapp-logo text-base"></i>
-                <span>Chamar no WhatsApp (27) 98814-0076</span>
+
+              <div class="p-4 rounded-xl bg-surface-50 border border-surface-200 space-y-2 hover-lift">
+                <div class="flex items-center space-x-2">
+                  <span class="text-amber-500 text-xs">★★★★★</span>
+                  <strong class="text-surface-900 font-bold">"Evitou um calote de R$ 340 mil"</strong>
+                </div>
+                <p class="text-surface-700 leading-relaxed">
+                  "Usamos na mesa de crédito antes de liberar duplicatas. O cliente tinha nome limpo no Serasa, mas o RecuperIA acusou sócia de 78 anos laranja e capital incompatível. Não fechamos e o concorrente tomou calote."
+                </p>
+                <span class="text-[11px] text-brand-700 font-semibold block">— Rodrigo Vasconcelos (Diretor de Riscos em Factoring · MG)</span>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ===================================================================== -->
+        <!-- COLUNA DIREITA: BOX DE CONVERSÃO FIXA (STICKY CARD 4 COLUNAS) -->
+        <!-- ===================================================================== -->
+        <div class="lg:col-span-4 relative">
+          
+          <div id="desktop-pricing-card" class="bg-white rounded-3xl border border-brand-300 p-5 sm:p-7 shadow-xl static lg:sticky lg:top-24 space-y-6 desktop-sticky-card max-h-[calc(100vh-7.5rem)] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between border-b border-surface-200 pb-4">
+              <div>
+                <span class="text-[11px] font-bold text-surface-600 uppercase tracking-wider block font-mono">Plano de Assinatura</span>
+                <span class="text-xs text-brand-700 font-bold flex items-center space-x-1 mt-0.5">
+                  <i class="ph-bold ph-shield-check"></i>
+                  <span>Garantia de Setup em 24h</span>
+                </span>
+              </div>
+              <span class="px-2.5 py-1 text-[10px] font-bold bg-brand-100 text-brand-900 rounded-md font-mono">Mais Escolhido</span>
+            </div>
+
+            <!-- Preço em Destaque -->
+            <div class="bg-gradient-to-br from-brand-50 to-surface-50 p-4 rounded-2xl border border-brand-200">
+              <span class="text-[11px] font-bold text-surface-600 block uppercase font-mono">Plano Escritório Pro</span>
+              <div class="flex items-baseline space-x-1.5 mt-1">
+                <span class="font-display text-3xl sm:text-4xl font-extrabold text-surface-900" id="card-price-display">R$ 890</span>
+                <span class="text-xs text-surface-600 font-bold">/mês</span>
+              </div>
+              <p class="text-[11px] text-surface-600 mt-1">
+                Até 3 usuários simultâneos · 60 dossiês completos/mês com o timbre da sua banca.
+              </p>
+            </div>
+
+            <!-- Seletor de Planos Rápido no Card -->
+            <div class="space-y-2">
+              <label class="block text-[11px] font-bold text-surface-700 uppercase font-mono">Escolha o Porte do Seu Escritório:</label>
+              <div class="grid grid-cols-3 gap-1.5 text-center text-xs font-mono">
+                <button onclick="selectCardPlan('solo')" id="plan-btn-solo" class="py-2 px-1 rounded-xl border border-surface-200 hover:border-brand-500 font-bold text-surface-700 transition">
+                  Solo<br><span class="text-[10px] text-surface-500">R$ 390</span>
+                </button>
+                <button onclick="selectCardPlan('pro')" id="plan-btn-pro" class="py-2 px-1 rounded-xl border-2 border-brand-600 bg-brand-50 font-bold text-brand-900 shadow-sm transition">
+                  Pro<br><span class="text-[10px] text-brand-700">R$ 890</span>
+                </button>
+                <button onclick="selectCardPlan('corp')" id="plan-btn-corp" class="py-2 px-1 rounded-xl border border-surface-200 hover:border-brand-500 font-bold text-surface-700 transition">
+                  Corporate<br><span class="text-[10px] text-surface-500">R$ 2.490</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- O que está incluso no pacote -->
+            <ul class="space-y-2.5 text-xs text-surface-700 border-t border-surface-200 pt-4 font-mono">
+              <li class="flex items-center space-x-2">
+                <i class="ph-bold ph-check text-emerald-600 font-bold"></i>
+                <span id="card-feature-dossiers">60 Dossiês A4 completos por mês</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph-bold ph-check text-emerald-600 font-bold"></i>
+                <span>Buscas ilimitadas em 55M de CNPJs</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph-bold ph-check text-emerald-600 font-bold"></i>
+                <span>Dossiê com logotipo do seu escritório</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph-bold ph-check text-emerald-600 font-bold"></i>
+                <span>Auditor de Matrículas e Cartórios (SAEC)</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="ph-bold ph-check text-emerald-600 font-bold"></i>
+                <span>Suporte direto com Rubens Loss</span>
+              </li>
+            </ul>
+
+            <!-- Botões de Ação Imediata -->
+            <div class="space-y-2 pt-2">
+              <a id="btn-whatsapp-card" href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Escrit%C3%B3rio%20Pro%20(R$%20890)%20do%20RecuperIA." target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase tracking-wider rounded-xl transition shadow-lg shadow-emerald-700/20 flex items-center justify-center gap-2">
+                <i class="ph-bold ph-whatsapp-logo text-base"></i>
+                <span>Contratar no WhatsApp</span>
               </a>
+
+              <button onclick="openDossierModal()" class="w-full py-2.5 px-4 bg-surface-100 hover:bg-surface-200 text-surface-900 font-bold text-xs uppercase rounded-xl transition flex items-center justify-center gap-1.5 border border-surface-300">
+                <i class="ph-bold ph-file-pdf"></i>
+                <span>Ver Laudo de Demonstração</span>
+              </button>
+            </div>
+
+            <!-- Selo de Atendimento Direto -->
+            <div class="pt-3 border-t border-surface-200 text-center">
+              <span class="text-[11px] text-surface-600 block">Atendimento & Implantação:</span>
+              <strong class="text-xs text-surface-900 font-mono">Rubens Loss · (27) 98814-0076</strong>
             </div>
 
           </div>
+
         </div>
 
       </div>
-
     </div>
-  </section>
+
+  </main>
 
   <!-- ========================================================================= -->
-  <!-- SEÇÃO: FAQ TÉCNICO & JURÍDICO -->
+  <!-- MODO 2: COCKPIT DO ESCRITÓRIO (GESTÃO OPERACIONAL & CARTEIRA DE PROCESSOS) -->
   <!-- ========================================================================= -->
-  <section id="faq" class="py-20 bg-slate-950/60 border-t border-white/5 relative scroll-mt-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main id="view-cockpit" class="hidden transition-opacity duration-300">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       
-      <div class="text-center mb-16">
-        <span class="font-mono text-xs uppercase tracking-widest text-slate-400 font-bold bg-slate-800 px-3 py-1 rounded-full border border-white/10">
-          Tira-Dúvidas
+      <!-- Topo do Cockpit com Status da Carteira -->
+      <div class="bg-surface-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-6 border border-surface-800">
+        <div>
+          <span class="text-xs font-mono uppercase text-brand-400 font-bold bg-brand-500/10 px-2.5 py-1 rounded border border-brand-500/20">
+            Mesa de Inteligência de Ativos · Modo Operacional
+          </span>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold mt-2">
+            Cockpit de Gestão da Carteira & Honorários
+          </h2>
+          <p class="text-xs text-zinc-300 mt-1">
+            Visão consolidada das execuções monitoradas, laudos emitidos e novos bens detectados nos cartórios e no DuckDB.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="triggerSimulatedAlert()" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition flex items-center gap-2 shadow-md">
+            <i class="ph-bold ph-whatsapp-logo text-base"></i>
+            <span>Simular Alerta de Bem Encontrado</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Métricas Gerais da Carteira -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-2xl border border-surface-200 shadow-sm">
+          <span class="text-[11px] font-mono uppercase text-surface-500 font-bold block">Casos Monitorados</span>
+          <div class="font-display font-extrabold text-3xl text-surface-900 mt-1">42</div>
+          <span class="text-[10px] text-emerald-600 font-bold mt-1 block">● 100% com dados ativos</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-surface-200 shadow-sm">
+          <span class="text-[11px] font-mono uppercase text-surface-500 font-bold block">Patrimônio Localizado</span>
+          <div class="font-display font-extrabold text-3xl text-amber-600 mt-1">R$ 14,8M</div>
+          <span class="text-[10px] text-surface-600 mt-1 block">Imóveis, cotas e veículos</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-surface-200 shadow-sm">
+          <span class="text-[11px] font-mono uppercase text-surface-500 font-bold block">Honorários de Êxito (20%)</span>
+          <div class="font-display font-extrabold text-3xl text-emerald-600 mt-1">R$ 2,96M</div>
+          <span class="text-[10px] text-emerald-600 font-bold mt-1 block">Receita potencial da banca</span>
+        </div>
+        <div class="bg-white p-5 rounded-2xl border border-surface-200 shadow-sm">
+          <span class="text-[11px] font-mono uppercase text-surface-500 font-bold block">Dossiês Emitidos</span>
+          <div class="font-display font-extrabold text-3xl text-sky-600 mt-1">28 / 60</div>
+          <span class="text-[10px] text-surface-600 mt-1 block">Saldo restante: 32</span>
+        </div>
+      </div>
+
+      <!-- Tabela Operacional de Execuções e Devedores -->
+      <div class="bg-white rounded-3xl border border-surface-200 p-6 sm:p-8 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-surface-200 gap-2">
+          <h3 class="font-display font-bold text-lg text-surface-900">
+            Esteira Ativa de Devedores & Desblindagens
+          </h3>
+          <span class="text-xs text-surface-600 font-mono">Atualizado há 4 minutos</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left font-mono text-xs text-surface-800">
+            <thead class="bg-surface-50 text-[11px] font-bold text-surface-900 uppercase border-b border-surface-200">
+              <tr>
+                <th class="py-3 px-4">Alvo / Processo</th>
+                <th class="py-3 px-4">Valor da Dívida</th>
+                <th class="py-3 px-4">Bens Localizados</th>
+                <th class="py-3 px-4">Score Laranja</th>
+                <th class="py-3 px-4">Status Jurídico</th>
+                <th class="py-3 px-4 text-center">Ações</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-surface-100">
+              <tr class="hover:bg-brand-50/20">
+                <td class="py-3 px-4">
+                  <strong class="text-surface-900 block font-sans">Marcos Vinícius Silveira</strong>
+                  <span class="text-[10px] text-surface-500">Proc. 1048291-88 · TJSP</span>
+                </td>
+                <td class="py-3 px-4 font-bold text-surface-900">R$ 480.000</td>
+                <td class="py-3 px-4 font-bold text-emerald-600">R$ 2.450.000 (3 Imóveis)</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-red-100 text-red-800 font-bold text-[10px]">91/100 (Crítico)</span></td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">Minuta Pronta</span></td>
+                <td class="py-3 px-4 text-center">
+                  <button onclick="openDossierModal()" class="px-2.5 py-1 bg-surface-800 hover:bg-surface-700 text-white font-bold rounded-lg text-[10px] transition">
+                    Ver Dossiê
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-brand-50/20">
+                <td class="py-3 px-4">
+                  <strong class="text-surface-900 block font-sans">AgroLogística Centro-Oeste Ltda</strong>
+                  <span class="text-[10px] text-surface-500">Proc. 0041920-11 · TJMT</span>
+                </td>
+                <td class="py-3 px-4 font-bold text-surface-900">R$ 1.200.000</td>
+                <td class="py-3 px-4 font-bold text-emerald-600">R$ 4.800.000 (14 Carretas)</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-red-100 text-red-800 font-bold text-[10px]">96/100 (Fraude)</span></td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold text-[10px]">Penhora Requerida</span></td>
+                <td class="py-3 px-4 text-center">
+                  <button onclick="openDossierModal()" class="px-2.5 py-1 bg-surface-800 hover:bg-surface-700 text-white font-bold rounded-lg text-[10px] transition">
+                    Ver Dossiê
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-brand-50/20">
+                <td class="py-3 px-4">
+                  <strong class="text-surface-900 block font-sans">Dr. Roberto Sampaio Cavalcanti</strong>
+                  <span class="text-[10px] text-surface-500">Proc. 5001928-44 · TRF2</span>
+                </td>
+                <td class="py-3 px-4 font-bold text-surface-900">R$ 750.000</td>
+                <td class="py-3 px-4 font-bold text-emerald-600">R$ 3.100.000 (Clínica)</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-bold text-[10px]">88/100 (Holding)</span></td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-bold text-[10px]">Em Análise</span></td>
+                <td class="py-3 px-4 text-center">
+                  <button onclick="openDossierModal()" class="px-2.5 py-1 bg-surface-800 hover:bg-surface-700 text-white font-bold rounded-lg text-[10px] transition">
+                    Ver Dossiê
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: VISUALIZADOR DO DOSSIÊ A4 TIMBRADO DEMONSTRATIVO -->
+  <!-- ========================================================================= -->
+  <div id="dossierModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl border border-white/20">
+      
+      <!-- Topo do Modal -->
+      <div class="p-4 sm:p-5 bg-surface-900 text-white flex items-center justify-between border-b border-surface-800">
+        <div class="flex items-center space-x-2.5">
+          <div class="w-8 h-8 rounded-lg bg-brand-500 text-black flex items-center justify-center font-bold">
+            <i class="ph-bold ph-file-text"></i>
+          </div>
+          <div>
+            <h4 class="font-display font-bold text-sm">Dossiê Pericial Timbrado A4 · Pré-Visualização</h4>
+            <span class="text-[10px] text-zinc-400 font-mono">Padrão Oficial de Emissão com Timbre do Escritório</span>
+          </div>
+        </div>
+        <button onclick="closeDossierModal()" class="text-zinc-400 hover:text-white p-1 rounded-lg">
+          <i class="ph-bold ph-x text-xl"></i>
+        </button>
+      </div>
+
+      <!-- Conteúdo do Laudo Simulado A4 -->
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-xs text-surface-800 font-mono bg-surface-50 custom-scrollbar">
+        
+        <!-- Cabeçalho do Laudo -->
+        <div class="p-4 bg-white rounded-2xl border border-surface-200 shadow-sm flex items-center justify-between">
+          <div>
+            <span class="font-bold text-surface-900 text-sm font-sans block">[SUA BANCA DE ADVOCACIA AQUI]</span>
+            <span class="text-[10px] text-surface-500">LAUDO PERICIAL DE INVESTIGAÇÃO PATRIMONIAL FORENSE</span>
+          </div>
+          <span class="px-2.5 py-1 bg-brand-100 text-brand-900 font-bold rounded text-[10px]">
+            CERTIFICADO Nº 2026/842
+          </span>
+        </div>
+
+        <!-- Dados do Alvo -->
+        <div class="p-4 bg-white rounded-2xl border border-surface-200 shadow-sm space-y-2">
+          <div class="font-bold text-surface-900 font-sans border-b border-surface-100 pb-1">
+            IDENTIFICAÇÃO DO DEVEDOR & QUADRO DE DÍVIDA
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-[11px]">
+            <div><strong>Alvo:</strong> Marcos Vinícius Silveira</div>
+            <div><strong>CPF:</strong> 382.491.708-54</div>
+            <div><strong>Valor da Execução:</strong> R$ 480.000,00</div>
+            <div><strong>Atualização Art. 798 CPC:</strong> R$ 542.180,40</div>
+          </div>
+        </div>
+
+        <!-- Quadro de Bens Localizados -->
+        <div class="p-4 bg-white rounded-2xl border border-surface-200 shadow-sm space-y-3">
+          <div class="font-bold text-surface-900 font-sans border-b border-surface-100 pb-1 flex justify-between">
+            <span>PATRIMÔNIO DESCOBERTO COM PROVAS ANEXAS</span>
+            <span class="text-emerald-600">TOTAL: R$ 2.450.000,00</span>
+          </div>
+
+          <div class="space-y-2 text-[11px]">
+            <div class="p-2.5 rounded-lg bg-surface-50 border border-surface-200">
+              <strong class="text-surface-900 block">1. Imóvel Cobertura · 2º RGI Vila Velha/ES (Matrícula 48.912)</strong>
+              <span class="text-surface-600">Avaliação: R$ 1.800.000 · Transferência para Holding 22 dias pós-citação. Prova de Fraude Art. 158 CC.</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-surface-50 border border-surface-200">
+              <strong class="text-surface-900 block">2. Veículo BMW X6 M-Sport 2024 (Placa Q**-9912)</strong>
+              <span class="text-surface-600">FIPE: R$ 620.000 · Registrado em nome de Cônjuge (Comunhão de Bens apurada).</span>
+            </div>
+            <div class="p-2.5 rounded-lg bg-surface-50 border border-surface-200">
+              <strong class="text-surface-900 block">3. Cotas Sociais na Empresa M.V.S. Participações Ltda</strong>
+              <span class="text-surface-600">Capital Social: R$ 1.800.000 · Devedor titular de 95% do capital social.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conclusão e Minuta -->
+        <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 text-emerald-950 text-[11px] space-y-1">
+          <strong class="block font-bold">CONCLUSÃO PERICIAL:</strong>
+          <p>
+            Constatada a confusão patrimonial, esvaziamento premeditado e ocultação sob pessoa interposta. Peça de desconsideração inversa e pedido de penhora pronta para protocolo.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Rodapé do Modal com Botão WhatsApp -->
+      <div class="p-4 bg-white border-t border-surface-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span class="text-xs text-surface-600">
+          Quer esse padrão de laudo no seu escritório?
         </span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-4 mb-4">
-          Perguntas Frequentes de Advogados e Gestores de Risco
-        </h2>
-      </div>
-
-      <div class="space-y-4">
-        
-        <details class="glass-card p-5 rounded-2xl border-white/10 group cursor-pointer">
-          <summary class="font-display font-bold text-base text-white flex justify-between items-center list-none">
-            <span>As informações e o dossiê são válidos perante os Tribunais (TJSP, TJRJ, TRF)?</span>
-            <i class="ph ph-caret-down text-amber-400 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-xs text-slate-300 mt-3 leading-relaxed font-mono">
-            Sim. O RecuperIA compila dados oficiais de fontes públicas (Receita Federal, SAEC/Cartórios de Imóveis, Diários Oficiais e Registros Comerciais) de forma estruturada. As minutas processuais acompanham a fundamentação legal e jurisprudência consolidada do Superior Tribunal de Justiça (STJ) sobre desconsideração da personalidade jurídica (Art. 50 do Código Civil) e fraude contra credores (Art. 158/159 do CC e Art. 792 do CPC).
-          </p>
-        </details>
-
-        <details class="glass-card p-5 rounded-2xl border-white/10 group cursor-pointer">
-          <summary class="font-display font-bold text-base text-white flex justify-between items-center list-none">
-            <span>A plataforma está em conformidade com a LGPD?</span>
-            <i class="ph ph-caret-down text-amber-400 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-xs text-slate-300 mt-3 leading-relaxed font-mono">
-            Sim. A utilização de dados estritamente voltada para a instrução probatória em processos judiciais e legítimo interesse em recuperação de crédito encontra respaldo expresso no Art. 7º, incisos VI (exercício regular de direitos em processo judicial) e X (proteção do crédito) da Lei Geral de Proteção de Dados (Lei 13.709/2018).
-          </p>
-        </details>
-
-        <details class="glass-card p-5 rounded-2xl border-white/10 group cursor-pointer">
-          <summary class="font-display font-bold text-base text-white flex justify-between items-center list-none">
-            <span>Qual a diferença do RecuperIA para birôs tradicionais como Serasa ou Neoway?</span>
-            <i class="ph ph-caret-down text-amber-400 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-xs text-slate-300 mt-3 leading-relaxed font-mono">
-            Bureaus tradicionais foram desenhados para crédito corporativo genérico. Eles entregam planilhas brutas de centenas de linhas, cobram anuidades abusivas e não geram peças jurídicas. O RecuperIA é uma ferramenta de ação direta: ele não apenas acha o bem escondido em holdings e cônjuges, como já entrega a petição redigida e o laudo pericial timbrado pronto para protocolo em 2 segundos.
-          </p>
-        </details>
-
-        <details class="glass-card p-5 rounded-2xl border-white/10 group cursor-pointer">
-          <summary class="font-display font-bold text-base text-white flex justify-between items-center list-none">
-            <span>Posso colocar o logotipo do meu próprio escritório no laudo?</span>
-            <i class="ph ph-caret-down text-amber-400 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-xs text-slate-300 mt-3 leading-relaxed font-mono">
-            Com certeza! Nos planos Escritório Pro e Corporate, a plataforma permite parametrizar o timbre, a paleta de cores institucional e os dados da sua banca. O cliente final recebe um relatório com o padrão visual do seu próprio escritório.
-          </p>
-        </details>
-
-        <details class="glass-card p-5 rounded-2xl border-white/10 group cursor-pointer">
-          <summary class="font-display font-bold text-base text-white flex justify-between items-center list-none">
-            <span>Como funciona a contratação e em quanto tempo o sistema é ativado?</span>
-            <i class="ph ph-caret-down text-amber-400 group-open:rotate-180 transition-transform"></i>
-          </summary>
-          <p class="text-xs text-slate-300 mt-3 leading-relaxed font-mono">
-            A contratação é realizada diretamente com o nosso arquiteto e fundador, Rubens Loss. Após a confirmação, o setup e os acessos da sua equipe são liberados no mesmo dia, acompanhados de um treinamento rápido via videoconferência para sua equipe jurídica.
-          </p>
-        </details>
-
+        <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Vi%20o%20modelo%20do%20dossi%C3%AA%20do%20RecuperIA%20e%20gostaria%20de%20implantar%20na%20minha%20banca." target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase rounded-xl transition flex items-center gap-1.5 shadow-md">
+          <i class="ph-bold ph-whatsapp-logo text-base"></i>
+          <span>Contratar Plataforma no WhatsApp</span>
+        </a>
       </div>
 
     </div>
-  </section>
+  </div>
 
   <!-- ========================================================================= -->
-  <!-- CTA FINAL DE CONVERSÃO -->
+  <!-- BARRA FLUTUANTE INFERIOR MOBILE (CONVERSÃO RÁPIDA WHATSAPP) -->
   <!-- ========================================================================= -->
-  <section class="py-20 relative overflow-hidden">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-      <div class="glass-card-gold p-8 sm:p-14 rounded-3xl border border-amber-500/40 shadow-2xl relative">
-        
-        <div class="inline-flex items-center gap-2 font-mono text-xs uppercase px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30 mb-6">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Demonstração Assistida Disponível</span>
-        </div>
-
-        <h2 class="font-display font-black text-3xl sm:text-5xl text-white mb-6 tracking-tight">
-          Pronto para Transformar Execuções Travadas em <span class="text-amber-400">Honorários na Conta</span>?
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-lg max-w-2xl mx-auto mb-8 font-light">
-          Agende 15 minutos com o fundador Rubens Loss e veja o RecuperIA escanear um CPF ou CNPJ devedor real do seu escritório em tempo real.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20ao%20vivo%20do%20RecuperIA%20no%20meu%20escrit%C3%B3rio." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-black text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all flex items-center justify-center gap-2">
-            <i class="ph ph-whatsapp-logo text-xl"></i>
-            <span>Agendar Demonstração no WhatsApp</span>
-          </a>
-          <a href="https://rubensloss.github.io/seguroflow-crm/hub.html" class="w-full sm:w-auto px-6 py-4 rounded-xl glass-card text-white hover:text-amber-400 font-bold text-sm border border-white/10 transition-colors flex items-center justify-center gap-2">
-            <span>✦ Conhecer Outras Soluções</span>
-          </a>
-        </div>
-
-        <div class="mt-6 text-xs text-slate-400 font-mono">
-          Contato Direto Creative Web: <strong>(27) 98814-0076</strong> · Rubens Loss
-        </div>
-
-      </div>
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-surface-900/95 backdrop-blur-lg border-t border-white/10 flex items-center justify-between gap-3">
+    <div>
+      <div class="text-[10px] text-zinc-400 font-mono">RECUPERIA PRO</div>
+      <div class="text-xs font-bold text-brand-400">R$ 890/mês · Setup 24h</div>
     </div>
-  </section>
+    <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20uma%20demonstra%C3%A7%C3%A3o%20do%20RecuperIA%20para%20o%20meu%20escrit%C3%B3rio." target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs uppercase rounded-xl flex items-center gap-1.5 shadow-md">
+      <i class="ph-bold ph-whatsapp-logo text-base"></i>
+      <span>Falar no WhatsApp</span>
+    </a>
+  </div>
 
   <!-- ========================================================================= -->
   <!-- FOOTER CORPORATIVO -->
   <!-- ========================================================================= -->
-  <footer class="bg-slate-950 border-t border-white/10 py-12 text-slate-400 text-xs font-mono">
+  <footer class="bg-surface-950 text-zinc-400 py-12 pb-24 lg:pb-12 border-t border-white/10 text-xs font-mono">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center font-black text-black text-base font-sans">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center font-black text-black text-base font-display">
           R
         </div>
         <div>
           <span class="text-white font-bold text-sm font-sans">RecuperIA Enterprise</span>
-          <p class="text-[10px] text-slate-400">Uma solução desenvolvida pela Creative Web</p>
+          <p class="text-[10px] text-zinc-400">Apresentação Comercial & Cockpit de Investigação Patrimonial</p>
         </div>
       </div>
 
       <div class="flex flex-wrap items-center justify-center gap-6 text-[11px]">
-        <a href="#motores" class="hover:text-amber-400 transition-colors">Os 6 Motores</a>
-        <a href="#simulador" class="hover:text-amber-400 transition-colors">Simulador</a>
-        <a href="#calculadora" class="hover:text-amber-400 transition-colors">Calculadora ROI</a>
-        <a href="#planos" class="hover:text-amber-400 transition-colors">Planos</a>
-        <a href="https://rubensloss.github.io/seguroflow-crm/hub.html" class="text-amber-400 hover:text-amber-300 font-bold">✦ Hub de Soluções</a>
+        <a href="https://rubensloss.github.io/creative-web/" target="_blank" class="text-amber-400 hover:text-amber-300 font-bold">✦ Hub de Soluções</a>
+        <a href="https://rubensloss.github.io/seguroflow-crm/" target="_blank" class="hover:text-white transition">SeguroFlow OS</a>
+        <a href="https://rubensloss.github.io/vivant-ia/" target="_blank" class="hover:text-white transition">Vivant IA</a>
+        <a href="https://rubensloss.github.io/geopulse-engine/" target="_blank" class="hover:text-white transition">GeoPulse Engine</a>
       </div>
 
       <div class="text-center md:text-right text-[10px]">
         <div>&copy; 2026 Creative Web. Todos os direitos reservados.</div>
-        <div class="text-slate-400">Arquitetura & Engenharia: Rubens Loss</div>
+        <div class="text-zinc-400">Arquiteto & Engenharia: Rubens Loss · (27) 98814-0076</div>
       </div>
 
     </div>
   </footer>
 
   <!-- ========================================================================= -->
-  <!-- FLOATING BOTTOM BAR (MOBILE CONVERSION) -->
-  <!-- ========================================================================= -->
-  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 p-3 bg-slate-950/95 backdrop-blur-lg border-t border-white/10 flex items-center justify-between gap-3">
-    <div>
-      <div class="text-[10px] text-slate-400 font-mono">RECUPERIA ENTERPRISE</div>
-      <div class="text-xs font-bold text-amber-400">Desblindagem Forense</div>
-    </div>
-    <a href="https://wa.me/5527988140076?text=Ol%C3%A1%20Rubens!%20Gostaria%20de%20uma%20demonstra%C3%A7%C3%A3o%20do%20RecuperIA%20no%20meu%20escrit%C3%B3rio." target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 text-black font-extrabold text-xs uppercase flex items-center gap-1.5 shadow-lg shadow-amber-500/20">
-      <i class="ph ph-whatsapp-logo text-base"></i>
-      <span>Falar no WhatsApp</span>
-    </a>
-  </div>
-
-  <!-- ========================================================================= -->
-  <!-- SCRIPTS INTERATIVOS -->
+  <!-- SCRIPTS DE COMPORTAMENTO & INTERATIVIDADE (PADRÃO VIVANT IA) -->
   <!-- ========================================================================= -->
   <script>
-    // Toggle Mobile Navigation
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    if (mobileMenuBtn && mobileDrawer) {
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileDrawer.classList.toggle('hidden');
-      });
-      // Close on link click
-      mobileDrawer.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileDrawer.classList.add('hidden');
-        });
-      });
+    // Alternância de Modo (Dossiê Comercial vs Cockpit)
+    function switchMode(mode) {
+      const viewDossier = document.getElementById('view-dossier');
+      const viewCockpit = document.getElementById('view-cockpit');
+      const btnDossier = document.getElementById('btn-mode-dossier');
+      const btnCockpit = document.getElementById('btn-mode-cockpit');
+      const btnDossierMob = document.getElementById('btn-mode-dossier-mob');
+      const btnCockpitMob = document.getElementById('btn-mode-cockpit-mob');
+
+      if (mode === 'cockpit') {
+        viewDossier.classList.add('hidden');
+        viewCockpit.classList.remove('hidden');
+
+        // Estilos botões desktop
+        btnDossier.className = "px-4 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-2 transition-all duration-300 text-zinc-300 hover:text-white";
+        btnCockpit.className = "px-4 py-1.5 rounded-full text-xs font-bold flex items-center space-x-2 transition-all duration-300 bg-brand-600 text-white shadow-sm";
+
+        // Estilos botões mobile
+        btnDossierMob.className = "py-2 px-2 rounded-lg font-semibold flex items-center justify-center space-x-1.5 transition-all text-zinc-300 hover:text-white";
+        btnCockpitMob.className = "py-2 px-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition-all bg-brand-600 text-white shadow-sm";
+      } else {
+        viewCockpit.classList.add('hidden');
+        viewDossier.classList.remove('hidden');
+
+        // Estilos botões desktop
+        btnDossier.className = "px-4 py-1.5 rounded-full text-xs font-bold flex items-center space-x-2 transition-all duration-300 bg-brand-600 text-white shadow-sm";
+        btnCockpit.className = "px-4 py-1.5 rounded-full text-xs font-semibold flex items-center space-x-2 transition-all duration-300 text-zinc-300 hover:text-white";
+
+        // Estilos botões mobile
+        btnDossierMob.className = "py-2 px-2 rounded-lg font-bold flex items-center justify-center space-x-1.5 transition-all bg-brand-600 text-white shadow-sm";
+        btnCockpitMob.className = "py-2 px-2 rounded-lg font-semibold flex items-center justify-center space-x-1.5 transition-all text-zinc-300 hover:text-white";
+      }
     }
 
-    // Interactive Target Scenarios
-    const simTargets = {
+    // Casos Comerciais Interativos
+    const commercialCases = {
       1: {
-        name: "Marcos Vinícius Silveira",
-        doc: "382.491.708-54",
-        date: "15/03/2023",
-        debt: "R$ 480.000",
-        score: "91/100 (Crítico)",
-        summaryTitle: "Patrimônio Localizado Encontrado: R$ 2.450.000,00",
-        summaryDesc: "Mapeadas 3 empresas ativas no QSA, 2 imóveis em cartório e 1 comunhão de bens omitida do processo.",
-        imoveis: [
-          { title: "Matrícula 48.912 · 2º RGI", desc: "Apto Cobertura Jardins · R$ 1.800.000", alert: "⚠️ Alienado à Holding 22 dias após protesto" },
-          { title: "Matrícula 12.043 · 1º RGI", desc: "Galpão Logístico · R$ 650.000", alert: "" }
-        ],
-        veiculos: [
-          { title: "BMW X6 M-Sport 2024", desc: "FIPE: R$ 620.000 · Placa Q**-9912", alert: "✓ Titular: Cônjuge (Comunhão de Bens)" },
-          { title: "Lancha Fibrafort 310 (Marinha)", desc: "Valor Est.: R$ 380.000", alert: "" }
-        ],
-        socios: [
-          { title: "M.V.S. Holding Participações", desc: "CNPJ 48.***.***/0001-90 · Capital: R$ 1.8M", alert: "⚠️ Sócio Administrador com 95% das cotas" },
-          { title: "Logística Prime Eireli", desc: "CNPJ 32.***.***/0001-12 · Faturamento Ativo", alert: "" }
-        ]
+        name: "Dossiê: Marcos Vinícius Silveira",
+        doc: "CPF: 382.491.708-54 · Processo 1048291-88.2023.8.26.0100",
+        badge: "Score Laranja: 91/100 (Crítico)",
+        total: "R$ 2.450.000,00",
+        empresas: "Mapeamento relacional da holding M.V.S. Participações (Capital R$ 1.8M) criada 22 dias após a citação judicial, com 95% das cotas em nome do titular.",
+        imoveis: "Cobertura de 320m² (Matrícula 48.912 - 2º RGI) avaliada em R$ 1.800.000 + Galpão logístico de R$ 650.000 com cláusula simulada de usufruto.",
+        veiculos: "BMW X6 2024 (R$ 620.000) registrada no nome do cônjuge sob regime de comunhão parcial + Lancha Fibrafort 310 na Capitania dos Portos."
       },
       2: {
-        name: "AgroLogística Centro-Oeste Ltda",
-        doc: "19.382.910/0001-84",
-        date: "28/08/2022",
-        debt: "R$ 1.200.000",
-        score: "96/100 (Fraude Evidente)",
-        summaryTitle: "Patrimônio Localizado Encontrado: R$ 4.800.000,00",
-        summaryDesc: "Grupo econômico de fachada operando com sócia de 81 anos sem capacidade financeira e 14 carretas ativas.",
-        imoveis: [
-          { title: "Matrícula 98.411 · RGI Sinop/MT", desc: "Fazenda 180ha Soja · R$ 3.200.000", alert: "⚠️ Doação em condomínio a netos menores" },
-          { title: "Matrícula 04.991 · RGI Cuiabá/MT", desc: "Pátio de Manobra · R$ 1.600.000", alert: "" }
-        ],
-        veiculos: [
-          { title: "14 Cavalos Mecânicos Scania R450", desc: "Frotas registradas em filial recém-aberta", alert: "✓ Rastreados via ANTT em circulação" },
-          { title: "Toyota Hilux SRX 2024", desc: "Placa R**-0192 · R$ 340.000", alert: "" }
-        ],
-        socios: [
-          { title: "Sócia Interposta: Nair de Oliveira", desc: "Idade: 81 anos · Renda declarada incompatível", alert: "🚨 TESTA DE FERRO IDENTIFICADA (Nota 98)" },
-          { title: "Procurador Oculto: Carlos Alberto Mendes", desc: "Poderes totais de movimentação bancária", alert: "✓ Alvo de penhora direta requerida" }
-        ]
+        name: "Dossiê: AgroLogística Centro-Oeste Ltda",
+        doc: "CNPJ: 19.382.910/0001-84 · Processo 0041920-11.2022.8.11.0001",
+        badge: "Score Laranja: 96/100 (Fraude Evidente)",
+        total: "R$ 4.800.000,00",
+        empresas: "Sócia majoritária interposta de 81 anos sem renda compatível. Procurador oculto Carlos Alberto Mendes com amplos poderes bancários.",
+        imoveis: "Fazenda de 180ha (Matrícula 98.411 - Sinop/MT) doada a netos menores com reserva de usufruto após protesto da duplicata.",
+        veiculos: "14 cavalos mecânicos Scania R450 faturados por filial recém-aberta operando normalmente nas rodovias."
       },
       3: {
-        name: "Dr. Roberto Sampaio Cavalcanti",
-        doc: "119.402.819-33",
-        date: "10/11/2023",
-        debt: "R$ 750.000",
-        score: "88/100 (Blindagem Familiar)",
-        summaryTitle: "Patrimônio Localizado Encontrado: R$ 3.100.000,00",
-        summaryDesc: "Transferência de clínica médica e consultórios para cônjuge casada em regime de comunhão parcial com simulação de separação de fato.",
-        imoveis: [
-          { title: "Matrícula 66.192 · 4º RGI", desc: "Conjunto Comercial 300m² · R$ 2.100.000", alert: "⚠️ Escritura lavrada durante a ação executiva" },
-          { title: "Matrícula 31.849 · 2º RGI", desc: "Casa de Praia em Guarapari · R$ 1.000.000", alert: "" }
-        ],
-        veiculos: [
-          { title: "Porsche Macan 2023", desc: "FIPE: R$ 510.000 · Placa S**-8841", alert: "✓ Uso pessoal comprovado em registros" }
-        ],
-        socios: [
-          { title: "Clínica Diagnóstica Sampaio Ltda", desc: "CNPJ 28.***.***/0001-44 · Faturamento Mensal R$ 420k", alert: "✓ Penhora sobre 15% do faturamento viável" }
-        ]
+        name: "Dossiê: Dr. Roberto Sampaio Cavalcanti",
+        doc: "CPF: 119.402.819-33 · Processo 5001928-44.2023.4.02.5101",
+        badge: "Score Laranja: 88/100 (Holding Familiar)",
+        total: "R$ 3.100.000,00",
+        empresas: "Clínica Diagnóstica Sampaio Ltda com faturamento de R$ 420k/mês operando em endereço de cônjuge.",
+        imoveis: "Conjunto comercial de 300m² (Matrícula 66.192 - 4º RGI) avaliado em R$ 2.100.000 transferido em separação simulada.",
+        veiculos: "Porsche Macan 2023 (FIPE R$ 510.000) de uso estritamente pessoal comprovado em registros."
       }
     };
 
-    let activeTargetId = 1;
+    function setCommercialCase(id) {
+      const c = commercialCases[id];
+      document.getElementById('case-target-name').textContent = c.name;
+      document.getElementById('case-target-doc').textContent = c.doc;
+      document.getElementById('case-risk-badge').textContent = c.badge;
+      document.getElementById('case-total-amount').textContent = c.total;
+      document.getElementById('case-desc-empresas').textContent = c.empresas;
+      document.getElementById('case-desc-imoveis').textContent = c.imoveis;
+      document.getElementById('case-desc-veiculos').textContent = c.veiculos;
 
-    function setSimTarget(id) {
-      activeTargetId = id;
-      const t = simTargets[id];
-      document.getElementById('simName').value = t.name;
-      document.getElementById('simDoc').value = t.doc;
-      document.getElementById('simDate').value = t.date;
-
-      // Update button visual states
       [1, 2, 3].forEach(i => {
-        const btn = document.getElementById(`targetBtn${i}`);
+        const btn = document.getElementById(`case-btn-${i}`);
         if (i === id) {
-          btn.className = "text-left p-3.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-white font-medium text-xs transition-all flex flex-col gap-1";
+          btn.className = "p-3 rounded-xl bg-brand-600 text-white text-left text-xs font-bold transition flex flex-col justify-between shadow-sm";
         } else {
-          btn.className = "text-left p-3.5 rounded-xl border border-white/10 bg-slate-900/60 text-slate-300 font-medium text-xs transition-all hover:bg-slate-800/80 flex flex-col gap-1";
+          btn.className = "p-3 rounded-xl bg-white/5 hover:bg-white/10 text-zinc-300 text-left text-xs font-bold transition flex flex-col justify-between border border-white/10";
         }
       });
-
-      // Reset scan results view
-      document.getElementById('scanResults').classList.add('hidden');
-      document.getElementById('scanLogText').innerHTML = `
-        <p>● Caso alterado para <strong>${t.name}</strong>. Pressione <strong class="text-amber-400">"Escanear"</strong> para rodar a varredura DuckDB.</p>
-      `;
     }
 
-    function runForensicScan() {
-      const t = simTargets[activeTargetId];
-      const btn = document.getElementById('btnRunScan');
-      const logBox = document.getElementById('scanLogText');
-      const resultsDiv = document.getElementById('scanResults');
+    // Seletor de Planos no Sticky Card
+    const plansData = {
+      solo: {
+        price: "R$ 390",
+        dossiers: "20 Dossiês A4 completos por mês",
+        waText: "Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Solo%20(R$%20390)%20do%20RecuperIA."
+      },
+      pro: {
+        price: "R$ 890",
+        dossiers: "60 Dossiês A4 completos por mês",
+        waText: "Ol%C3%A1%20Rubens!%20Gostaria%20de%20assinar%20o%20Plano%20Escrit%C3%B3rio%20Pro%20(R$%20890)%20do%20RecuperIA."
+      },
+      corp: {
+        price: "R$ 2.490",
+        dossiers: "200 Dossiês A4 completos por mês",
+        waText: "Ol%C3%A1%20Rubens!%20Tenho%20interesse%20no%20Plano%20Corporate%20(R$%202.490)%20do%20RecuperIA."
+      }
+    };
 
-      btn.disabled = true;
-      btn.innerHTML = `<i class="ph ph-spinner animate-spin text-base"></i><span>Varrendo...</span>`;
-      resultsDiv.classList.add('hidden');
+    function selectCardPlan(key) {
+      const p = plansData[key];
+      document.getElementById('card-price-display').textContent = p.price;
+      document.getElementById('card-feature-dossiers').textContent = p.dossiers;
+      document.getElementById('btn-whatsapp-card').href = `https://wa.me/5527988140076?text=${p.waText}`;
 
-      const logs = [
-        `[1/4] Conectando ao cluster local DuckDB (55.482.119 estabelecimentos indexados)...`,
-        `[2/4] Cruzando dados de ${t.name} (${t.doc}) no QSA, filiais e capitais sociais...`,
-        `[3/4] Consultando barramento SAEC e certidões imobiliárias em busca de matrículas...`,
-        `[4/4] Calculando Score "Nota de Laranja" e redigindo Minuta de Penhora (Art. 798 CPC)...`
-      ];
-
-      logBox.innerHTML = '';
-      let step = 0;
-
-      const interval = setInterval(() => {
-        if (step < logs.length) {
-          const p = document.createElement('p');
-          p.className = 'text-cyan-300 font-mono text-[11px] animate-fade-in';
-          p.innerHTML = logs[step];
-          logBox.appendChild(p);
-          step++;
+      ['solo', 'pro', 'corp'].forEach(k => {
+        const btn = document.getElementById(`plan-btn-${k}`);
+        if (k === key) {
+          btn.className = "py-2 px-1 rounded-xl border-2 border-brand-600 bg-brand-50 font-bold text-brand-900 shadow-sm transition";
         } else {
-          clearInterval(interval);
-          btn.disabled = false;
-          btn.innerHTML = `<i class="ph ph-check text-base font-bold text-black"></i><span>Concluído</span>`;
-
-          const successP = document.createElement('p');
-          successP.className = 'text-emerald-400 font-bold font-mono text-[11px] mt-1';
-          successP.innerHTML = `✓ Varredura concluída com sucesso em 1.84 segundos! Dossiê pericial montado.`;
-          logBox.appendChild(successP);
-
-          // Populate results
-          document.getElementById('resScoreText').textContent = `Score Laranja: ${t.score}`;
-          document.getElementById('resSummaryTitle').textContent = t.summaryTitle;
-          document.getElementById('resSummaryDesc').textContent = t.summaryDesc;
-
-          // Populate Imóveis
-          const imoveisBox = document.getElementById('resImoveisBox');
-          imoveisBox.innerHTML = t.imoveis.map(im => `
-            <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-              <div class="font-bold text-white">${im.title}</div>
-              <div class="text-slate-400 text-[10px]">${im.desc}</div>
-              ${im.alert ? `<div class="text-amber-400 text-[10px] mt-1">${im.alert}</div>` : ''}
-            </div>
-          `).join('');
-
-          // Populate Veículos
-          const veiculosBox = document.getElementById('resVeiculosBox');
-          veiculosBox.innerHTML = t.veiculos.map(vc => `
-            <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-              <div class="font-bold text-white">${vc.title}</div>
-              <div class="text-slate-400 text-[10px]">${vc.desc}</div>
-              ${vc.alert ? `<div class="text-cyan-400 text-[10px] mt-1">${vc.alert}</div>` : ''}
-            </div>
-          `).join('');
-
-          // Populate Sócios
-          const sociosBox = document.getElementById('resSociosBox');
-          sociosBox.innerHTML = t.socios.map(sc => `
-            <div class="bg-slate-900/80 p-2.5 rounded-lg border border-white/5">
-              <div class="font-bold text-white">${sc.title}</div>
-              <div class="text-slate-400 text-[10px]">${sc.desc}</div>
-              ${sc.alert ? `<div class="text-amber-400 text-[10px] mt-1">${sc.alert}</div>` : ''}
-            </div>
-          `).join('');
-
-          resultsDiv.classList.remove('hidden');
+          btn.className = "py-2 px-1 rounded-xl border border-surface-200 hover:border-brand-500 font-bold text-surface-700 transition";
         }
-      }, 420);
+      });
     }
 
-    function downloadMockDossier() {
-      const t = simTargets[activeTargetId];
-      alert(`[RecuperIA Enterprise]\n\nGerando Dossiê Executivo A4 Timbrado em Alta Definição para: ${t.name}\n\nO documento inclui o laudo técnico pericial de 5 páginas com comprovação de vínculo societário, fotos das matrículas e fundamentação jurídica pronta para anexar aos autos.`);
+    // Modal de Dossiê A4
+    function openDossierModal() {
+      document.getElementById('dossierModal').classList.remove('hidden');
+    }
+    function closeDossierModal() {
+      document.getElementById('dossierModal').classList.add('hidden');
     }
 
-    function copyMockPetition() {
-      const btn = document.getElementById('btnCopyPet');
-      btn.innerHTML = `<i class="ph ph-check text-emerald-400"></i><span>Minuta Copiada!</span>`;
-      setTimeout(() => {
-        btn.innerHTML = `<i class="ph ph-copy text-base"></i><span>Copiar Petição (.DOCX)</span>`;
-      }, 2500);
-      alert(`[RecuperIA Enterprise]\n\nMinuta de Pedido de Penhora e Desconsideração Inversa da Personalidade Jurídica copiada para a área de transferência!\n\nPronta para protocolo perante o juízo da execução.`);
+    // Simulação de Alerta no Cockpit
+    function triggerSimulatedAlert() {
+      alert(`[RecuperIA Cockpit]\n\n🚨 ALERTA OPERACIONAL DISPARADO:\n\nNovo bem penhorável identificado nos cartórios de imóveis (SAEC) para o processo Marcos Vinícius Silveira!\n\nUm alerta com o número da matrícula foi enviado diretamente para o WhatsApp do advogado.`);
     }
-
-    // Dynamic ROI Calculator
-    const rangeProcessos = document.getElementById('rangeProcessos');
-    const rangeTicket = document.getElementById('rangeTicket');
-    const rangeHonorarios = document.getElementById('rangeHonorarios');
-
-    function updateCalculator() {
-      const processos = parseInt(rangeProcessos.value, 10);
-      const ticket = parseInt(rangeTicket.value, 10);
-      const percHonorarios = parseInt(rangeHonorarios.value, 10) / 100;
-
-      document.getElementById('labelProcessos').textContent = `${processos} processos`;
-      document.getElementById('labelTicket').textContent = `R$ ${ticket.toLocaleString('pt-BR')}`;
-      document.getElementById('labelHonorarios').textContent = `${(percHonorarios * 100).toFixed(0)}%`;
-
-      // Conservative calculations
-      const totalDividas = processos * ticket;
-      const taxaSucesso = 0.35; // 35% de processos com bens descobertos
-      const patrimonioEncontrado = totalDividas * taxaSucesso;
-      const honorariosRecuperados = patrimonioEncontrado * percHonorarios;
-      const horasPoupadas = processos * 6; // 6 horas economizadas por caso
-
-      document.getElementById('resHonorariosTotal').textContent = `R$ ${honorariosRecuperados.toLocaleString('pt-BR', { maximumFractionDigits: 2 })}`;
-      document.getElementById('resPatrimonioTotal').textContent = `R$ ${patrimonioEncontrado.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}`;
-      document.getElementById('resHorasTotal').textContent = `${horasPoupadas}h poupadas`;
-
-      const mensalidadePro = 890;
-      const roi = honorariosRecuperados / (mensalidadePro * 3);
-      document.getElementById('resRoiTotal').textContent = `> ${roi.toFixed(0)}x no trimestre`;
-    }
-
-    rangeProcessos.addEventListener('input', updateCalculator);
-    rangeTicket.addEventListener('input', updateCalculator);
-    rangeHonorarios.addEventListener('input', updateCalculator);
-
-    // Initial update
-    updateCalculator();
   </script>
 </body>
 </html>
